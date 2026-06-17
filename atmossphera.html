@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atmossphera Studio — Gestión de alojamientos en Cantabria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --verde: #1C3D2A;
+    --verde-medio: #2D6347;
+    --verde-claro: #4A8C64;
+    --verde-palido: #C8DECE;
+    --crema: #F7F3EE;
+    --crema-oscuro: #EDE8E0;
+    --tierra: #8B7355;
+    --blanco: #FDFCF9;
+    --negro: #141410;
+    --gris: #6B6B65;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--blanco);
+    color: var(--negro);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: inherit; }
+
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 2.5rem; }
+
+  em { font-style: italic; color: var(--verde-medio); font-family: 'Cormorant Garamond', serif; font-weight: 400; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    margin-bottom: 1rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    line-height: 1.18;
+    color: var(--verde);
+  }
+  .section-body {
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--gris);
+    max-width: 540px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.6rem 2.5rem;
+    background: transparent;
+    transition: background 0.4s ease, padding 0.4s ease, border-color 0.4s ease;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    background: rgba(253,252,249,0.92);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--crema-oscuro);
+    padding: 1.1rem 2.5rem;
+  }
+  .logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+  .logo-icon { position: relative; width: 30px; height: 14px; }
+  .logo-icon img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 30px; height: auto;
+    transition: opacity 0.4s ease;
+  }
+  .logo-icon .icon-green { opacity: 0; }
+  nav.scrolled .logo-icon .icon-white { opacity: 0; }
+  nav.scrolled .logo-icon .icon-green { opacity: 1; }
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--blanco);
+    text-transform: uppercase;
+    transition: color 0.4s;
+  }
+  nav.scrolled .logo { color: var(--verde); }
+  .nav-links {
+    display: flex;
+    gap: 2.3rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  nav.scrolled .nav-links a { color: var(--gris); }
+  .nav-links a:hover { color: var(--verde-claro); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(160deg, #16301F 0%, #1C3D2A 55%, #2D6347 100%);
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 18% 25%, rgba(200,222,206,0.10) 0%, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(74,140,100,0.18) 0%, transparent 50%);
+  }
+  .hero-lines {
+    position: absolute;
+    right: -8%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 620px;
+    height: 620px;
+    opacity: 0.45;
+    pointer-events: none;
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 9rem 2.5rem 6rem;
+    max-width: 1180px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .hero-eyebrow {
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--verde-palido);
+    margin-bottom: 1.6rem;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 1.1;
+    color: var(--blanco);
+    max-width: 760px;
+    margin-bottom: 1.8rem;
+  }
+  .hero h1 em { color: var(--verde-palido); }
+  .hero-sub {
+    font-size: 1.08rem;
+    line-height: 1.75;
+    color: rgba(253,252,249,0.78);
+    max-width: 480px;
+    margin-bottom: 2.6rem;
+  }
+  .hero-cta {
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--blanco);
+    color: var(--verde);
+    padding: 0.95rem 2.1rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .btn-primary:hover { background: var(--verde-palido); transform: translateY(-2px); }
+  .cta-insta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    padding-bottom: 2px;
+    transition: color 0.3s, border-color 0.3s;
+  }
+  .cta-insta:hover { color: var(--verde-palido); border-color: var(--verde-palido); }
+
+  section { padding: 7.5rem 0; }
+
+  /* CONCEPTO */
+  .concepto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .concepto-text p.section-body { margin-top: 1.6rem; margin-bottom: 1.3rem; }
+  .pilares { display: flex; flex-direction: column; gap: 1.6rem; margin-top: 1rem; }
+  .pilar {
+    display: flex;
+    gap: 1.1rem;
+    align-items: flex-start;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--crema-oscuro);
+  }
+  .pilar-icon {
+    width: 34px; height: 34px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pilar-icon svg { width: 20px; height: 20px; stroke: var(--verde-claro); fill: none; stroke-width: 1.4; }
+  .pilar-text strong { display: block; font-size: 0.98rem; margin-bottom: 0.3rem; color: var(--negro); }
+  .pilar-text p { font-size: 0.92rem; line-height: 1.6; color: var(--gris); }
+
+  .concepto-visual {
+    background: var(--crema);
+    border: 1px solid var(--crema-oscuro);
+    border-radius: 4px;
+    padding: 2.6rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.2rem;
+  }
+  .vision-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 2.6rem;
+    line-height: 1.25;
+    color: var(--verde);
+  }
+  .vision-line {
+    width: 40px; height: 1px;
+    background: var(--tierra);
+  }
+  .vision-small {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--gris);
+  }
+
+  /* SERVICIOS */
+  .servicios { background: var(--crema); }
+  .servicios-intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: end;
+    margin-bottom: 3.5rem;
+  }
+  .servicios-lista {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem 3rem;
+  }
+  .servicio-item {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--crema-oscuro);
+    font-size: 0.96rem;
+    color: var(--negro);
+  }
+  .servicio-item .punto {
+    width: 6px; height: 6px;
+    flex-shrink: 0;
+    background: var(--verde-claro);
+    border-radius: 50%;
+  }
+  .servicio-nota {
+    margin-top: 2.5rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--verde-medio);
+    border-top: 1px solid var(--crema-oscuro);
+    padding-top: 1.8rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+  }
+
+  /* PROCESO */
+  .proceso-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+    margin-top: 4rem;
+    position: relative;
+  }
+  .proceso-steps::before {
+    content: '';
+    position: absolute;
+    top: 1.1rem;
+    left: 5%; right: 5%;
+    height: 1px;
+    background: var(--crema-oscuro);
+  }
+  .proceso-step { position: relative; }
+  .proceso-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--verde-claro);
+    background: var(--blanco);
+    display: inline-block;
+    padding-right: 0.8rem;
+    position: relative;
+    z-index: 2;
+  }
+  .proceso-step h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 1.1rem 0 0.6rem;
+    color: var(--negro);
+  }
+  .proceso-step p {
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--gris);
+  }
+
+  /* EQUIPO */
+  .equipo { background: var(--crema); }
+  .equipo-intro { max-width: 620px; margin-bottom: 3.5rem; }
+  .equipo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem;
+  }
+  .persona-card {
+    background: var(--blanco);
+    border: 1px solid var(--crema-oscuro);
+    border-radius: 4px;
+    padding: 2.4rem;
+  }
+  .persona-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    color: var(--verde);
+    margin-bottom: 0.3rem;
+  }
+  .persona-rol {
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--verde-claro);
+    font-weight: 600;
+  }
+
+  /* CONTACTO */
+  .contacto {
+    background: var(--verde);
+    color: var(--blanco);
+    text-align: center;
+  }
+  .contacto .section-label { color: var(--verde-palido); }
+  .contacto .section-title { color: var(--blanco); margin-bottom: 1.4rem; }
+  .contacto-body {
+    color: rgba(253,252,249,0.75);
+    max-width: 480px;
+    margin: 0 auto 2.6rem;
+    line-height: 1.75;
+  }
+  .contacto-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .contacto-directo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 2.2rem;
+  }
+  .contacto-directo a {
+    font-size: 0.88rem;
+    color: rgba(253,252,249,0.65);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 0.3s;
+  }
+  .contacto-directo a:hover { color: var(--verde-palido); }
+  .cta-divider {
+    width: 1px; height: 16px;
+    background: rgba(253,252,249,0.25);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--negro);
+    padding: 2rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .footer-logo img { width: 26px; height: auto; opacity: 0.4; }
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.04em;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero-content { padding: 7.5rem 1.5rem 4.5rem; }
+    section { padding: 5rem 0; }
+    .container { padding: 0 1.5rem; }
+    .concepto-grid,
+    .servicios-intro,
+    .equipo-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .servicios-lista { grid-template-columns: 1fr; }
+    .proceso-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem 1.5rem; }
+    .proceso-steps::before { display: none; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="logo-mark">
+    <div class="logo-icon">
+      <img src="logo-icon-white.png" class="icon-white" alt="">
+      <img src="logo-icon-green.png" class="icon-green" alt="">
+    </div>
+    <span class="logo">Atmossphera</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#concepto">Concepto</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#proceso">Proceso</a></li>
+    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hero-lines" viewBox="0 0 600 600" fill="none">
+    <circle cx="300" cy="300" r="280" stroke="#FDFCF9" stroke-opacity="0.06"/>
+    <circle cx="300" cy="300" r="200" stroke="#FDFCF9" stroke-opacity="0.08"/>
+    <circle cx="300" cy="300" r="120" stroke="#FDFCF9" stroke-opacity="0.1"/>
+  </svg>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Cantabria · Gestión de alojamientos · Naturaleza</p>
+    <h1>Donde la <em>naturaleza</em><br>define la experiencia</h1>
+    <p class="hero-sub">Gestionamos alojamientos en Cantabria. Nuestro objetivo es claro, un 20-30% más de rentabilidad para tu vivienda a través de precios dinámicos, mejor presencia y una experiencia de huésped cuidada. La naturaleza es la línea conductora de nuestra gestión.</p>
+    <div class="hero-cta">
+      <a href="#servicios" class="btn-primary">Ver servicios</a>
+      <a href="https://www.instagram.com/atmossphera.studio/" target="_blank" class="cta-insta">@atmossphera.studio</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPTO -->
+<section id="concepto">
+  <div class="container concepto-grid">
+    <div class="concepto-text">
+      <p class="section-label">Lo que hacemos</p>
+      <h2 class="section-title">Más rentabilidad para tu vivienda,<br>sin que te suponga más trabajo.</h2>
+      <p class="section-body">Trabajamos con propietarios que ya tienen su vivienda en marcha y quieren sacarle más partido sin complicarse. Nos adaptamos a tu gestión: ofrecemos distintos servicios que se pueden combinar según lo que necesite cada vivienda. El objetivo siempre es el mismo, un aumento de la rentabilidad y una mejor experiencia para los huéspedes.</p>
+
+      <div class="pilares">
+        <div class="pilar">
+          <div class="pilar-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 4 8-9"/><path d="M14 7h6v6"/></svg>
+          </div>
+          <div class="pilar-text">
+            <strong>Precio ajustado al mercado, día a día</strong>
+            <p>Ajustado a la demanda, a los alojamientos cercanos y a eventos importantes. Precio dinámico real, no solo estacional.</p>
+          </div>
+        </div>
+        <div class="pilar">
+          <div class="pilar-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 3l2.4 5.5 6 .5-4.5 4 1.4 5.8L12 16l-5.3 2.8 1.4-5.8-4.5-4 6-.5z"/></svg>
+          </div>
+          <div class="pilar-text">
+            <strong>El huésped correcto, mejores reseñas</strong>
+            <p>Pre-filtramos reservas y cuidamos los detalles para conseguir reseñas de calidad que sigan subiendo la rentabilidad.</p>
+          </div>
+        </div>
+        <div class="pilar">
+          <div class="pilar-icon">
+            <svg viewBox="0 0 24 24"><path d="M5 21c8 0 14-7 14-16-9 0-14 6-14 16z"/><path d="M5 21c3-5 7-9 12-12"/></svg>
+          </div>
+          <div class="pilar-text">
+            <strong>Naturaleza presente en cada vivienda</strong>
+            <p>Introducimos o mejoramos la vegetación de cada alojamiento. Cantabria es naturaleza, y eso se nota.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="concepto-visual">
+      <p class="vision-quote">+20–30%<br>de rentabilidad</p>
+      <div class="vision-line"></div>
+      <p class="vision-small">Es el aumento medio que conseguimos con pricing dinámico y una gestión activa de cada alojamiento. Empezamos siempre por donde más impacto tiene: el precio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section class="servicios" id="servicios">
+  <div class="container">
+    <div class="servicios-intro">
+      <div>
+        <p class="section-label">Cómo trabajamos</p>
+        <h2 class="section-title">Servicios que se combinan<br><em>según lo que necesites.</em></h2>
+      </div>
+      <p class="section-body">Mantenéis el control de las decisiones importantes en todo momento. Estos son los servicios que ofrecemos, podéis contratar uno solo o varios juntos.</p>
+    </div>
+
+    <div class="servicios-lista">
+      <div class="servicio-item"><span class="punto"></span>Pricing dinámico, ajustado por temporada y demanda real</div>
+      <div class="servicio-item"><span class="punto"></span>Análisis exhaustivo del mercado y competidores</div>
+      <div class="servicio-item"><span class="punto"></span>Definición de objetivos de rentabilidad anual</div>
+      <div class="servicio-item"><span class="punto"></span>Optimización del anuncio en Airbnb y Booking</div>
+      <div class="servicio-item"><span class="punto"></span>Gestión de reservas y mensajería con los huéspedes</div>
+      <div class="servicio-item"><span class="punto"></span>Detalle de bienvenida</div>
+      <div class="servicio-item"><span class="punto"></span>Apoyo en check-in o gestión presencial</div>
+      <div class="servicio-item"><span class="punto"></span>Mejora de fotografía y contenido del anuncio</div>
+      <div class="servicio-item"><span class="punto"></span>Solicitud activa de reseñas y seguimiento post-estancia</div>
+      <div class="servicio-item"><span class="punto"></span>Visibilidad en nuestras redes y estrategias de marketing</div>
+    </div>
+
+    <p class="servicio-nota">Nuestro modelo de negocio se adapta al cliente. Hablamos contigo para encontrar la colaboración que más sentido tiene para mejorar tu gestión.</p>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="container">
+    <p class="section-label">Cómo empezamos</p>
+    <h2 class="section-title">De la primera llamada<br><em>al primer informe.</em></h2>
+
+    <div class="proceso-steps">
+      <div class="proceso-step">
+        <span class="proceso-num">01</span>
+        <h4>Análisis</h4>
+        <p>Revisamos el anuncio actual y los datos reales de mercado en la zona de la vivienda.</p>
+      </div>
+      <div class="proceso-step">
+        <span class="proceso-num">02</span>
+        <h4>Configuración</h4>
+        <p>Optimizamos el anuncio e implementación de pricing dinámico.</p>
+      </div>
+      <div class="proceso-step">
+        <span class="proceso-num">03</span>
+        <h4>Gestión diaria</h4>
+        <p>Reservas, mensajería y huéspedes filtrados, cuidando la vivienda como si fuera nuestra.</p>
+      </div>
+      <div class="proceso-step">
+        <span class="proceso-num">04</span>
+        <h4>Informe mensual</h4>
+        <p>Control total de ingresos y ocupación, sin sorpresas y sin que os suponga una carga.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EQUIPO -->
+<section class="equipo" id="equipo">
+  <div class="container">
+    <p class="section-label">El equipo</p>
+    <h2 class="section-title">Una cartera reducida,<br><em>muy cuidada.</em></h2>
+    <p class="section-body equipo-intro" style="margin-top:1.4rem; margin-bottom:0.8rem;">No buscamos crecer en volumen ni convertirnos en una empresa de gestión masiva. Preferimos trabajar con pocas propiedades, seleccionadas con criterio, a las que podamos dedicar la atención que merecen.</p>
+    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem; color:var(--verde); margin-bottom:3.5rem;">Mejor estrategia y mejor gestión = mayor rentabilidad</p>
+
+    <div class="equipo-grid">
+      <div class="persona-card">
+        <h3>Víctor García</h3>
+        <p class="persona-rol">Estrategia, precio y gestión digital</p>
+      </div>
+      <div class="persona-card">
+        <h3>Rubén Lamo</h3>
+        <p class="persona-rol">Operativa, atención al huésped y hostelería</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contacto" id="contacto">
+  <div class="container">
+    <p class="section-label">Hablemos</p>
+    <h2 class="section-title">¿Quieres aumentar<br><em>tu rentabilidad?</em></h2>
+    <p class="contacto-body">Escríbenos y hablamos sobre qué servicios encajan mejor en tu situación actual.</p>
+    <div class="contacto-links">
+      <a href="https://www.instagram.com/atmossphera.studio/" target="_blank" class="btn-primary">Escribir por Instagram</a>
+    </div>
+    <div class="contacto-directo">
+      <a href="mailto:atmossphera360@gmail.com">atmossphera360@gmail.com</a>
+      <span class="cta-divider"></span>
+      <a href="tel:+34674671643">674 671 643</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo"><img src="logo-icon-white.png" alt="">Atmossphera Studio</span>
+  <span class="footer-copy">© 2026 Atmossphera Studio · Cantabria</span>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+</script>
+
+</body>
+</html>
