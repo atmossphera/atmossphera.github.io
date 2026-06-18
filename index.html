@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atmossphera Studio — Gestión de alojamientos en Cantabria</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -85,21 +85,21 @@
     align-items: center;
     gap: 0.65rem;
   }
-  .logo-icon { position: relative; width: 30px; height: 14px; }
+  .logo-icon { position: relative; width: 42px; height: 19px; }
   .logo-icon img {
     position: absolute;
     top: 0; left: 0;
-    width: 30px; height: auto;
+    width: 42px; height: auto;
     transition: opacity 0.4s ease;
   }
   .logo-icon .icon-green { opacity: 0; }
   nav.scrolled .logo-icon .icon-white { opacity: 0; }
   nav.scrolled .logo-icon .icon-green { opacity: 1; }
   .logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
     color: var(--blanco);
     text-transform: uppercase;
     transition: color 0.4s;
@@ -355,32 +355,7 @@
 
   /* EQUIPO */
   .equipo { background: var(--crema); }
-  .equipo-intro { max-width: 620px; margin-bottom: 3.5rem; }
-  .equipo-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.8rem;
-  }
-  .persona-card {
-    background: var(--blanco);
-    border: 1px solid var(--crema-oscuro);
-    border-radius: 4px;
-    padding: 2.4rem;
-  }
-  .persona-card h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-weight: 500;
-    font-size: 1.35rem;
-    color: var(--verde);
-    margin-bottom: 0.3rem;
-  }
-  .persona-rol {
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--verde-claro);
-    font-weight: 600;
-  }
+  .equipo-intro { max-width: 620px; }
 
   /* CONTACTO */
   .contacto {
@@ -390,6 +365,7 @@
   }
   .contacto .section-label { color: var(--verde-palido); }
   .contacto .section-title { color: var(--blanco); margin-bottom: 1.4rem; }
+  .contacto .section-title em { color: var(--verde-palido); }
   .contacto-body {
     color: rgba(253,252,249,0.75);
     max-width: 480px;
@@ -434,13 +410,14 @@
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 0.95rem;
-    letter-spacing: 0.12em;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     color: rgba(255,255,255,0.4);
   }
-  .footer-logo img { width: 26px; height: auto; opacity: 0.4; }
+  .footer-logo img { width: 130px; height: auto; opacity: 0.92; }
   .footer-copy {
     font-size: 0.72rem;
     color: rgba(255,255,255,0.25);
@@ -455,8 +432,7 @@
     section { padding: 5rem 0; }
     .container { padding: 0 1.5rem; }
     .concepto-grid,
-    .servicios-intro,
-    .equipo-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .servicios-intro { grid-template-columns: 1fr; gap: 2.5rem; }
     .servicios-lista { grid-template-columns: 1fr; }
     .proceso-steps { grid-template-columns: 1fr 1fr; gap: 2.5rem 1.5rem; }
     .proceso-steps::before { display: none; }
@@ -472,7 +448,7 @@
       <img src="logo-icon-white.png" class="icon-white" alt="">
       <img src="logo-icon-green.png" class="icon-green" alt="">
     </div>
-    <span class="logo">Atmossphera</span>
+    <span class="logo">Atmossphera Studio</span>
   </div>
   <ul class="nav-links">
     <li><a href="#concepto">Concepto</a></li>
@@ -613,18 +589,7 @@
     <p class="section-label">El equipo</p>
     <h2 class="section-title">Una cartera reducida,<br><em>muy cuidada.</em></h2>
     <p class="section-body equipo-intro" style="margin-top:1.4rem; margin-bottom:0.8rem;">No buscamos crecer en volumen ni convertirnos en una empresa de gestión masiva. Preferimos trabajar con pocas propiedades, seleccionadas con criterio, a las que podamos dedicar la atención que merecen.</p>
-    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem; color:var(--verde); margin-bottom:3.5rem;">Mejor estrategia y mejor gestión = mayor rentabilidad</p>
-
-    <div class="equipo-grid">
-      <div class="persona-card">
-        <h3>Víctor García</h3>
-        <p class="persona-rol">Estrategia, precio y gestión digital</p>
-      </div>
-      <div class="persona-card">
-        <h3>Rubén Lamo</h3>
-        <p class="persona-rol">Operativa, atención al huésped y hostelería</p>
-      </div>
-    </div>
+    <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem; color:var(--verde); margin-bottom:0;">Mejor estrategia y mejor gestión = mayor rentabilidad</p>
   </div>
 </section>
 
@@ -646,7 +611,7 @@
 </section>
 
 <footer>
-  <span class="footer-logo"><img src="logo-icon-white.png" alt="">Atmossphera Studio</span>
+  <span class="footer-logo"><img src="logo-wordmark-white.png" alt="Atmossphera Studio"></span>
   <span class="footer-copy">© 2026 Atmossphera Studio · Cantabria</span>
 </footer>
 
