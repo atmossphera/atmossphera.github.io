@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atmossphera Studio - Gestión de alojamientos en Cantabria</title>
+<title>Atmossphera Studio — Gestión de alojamientos en Cantabria</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Poppins:wght@700;800&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -298,27 +298,46 @@
   .servicios-lista {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    justify-content: center;
+    gap: 0.85rem;
     margin-top: 0.5rem;
   }
   .servicio-item {
     display: flex;
     align-items: center;
     gap: 0.7rem;
-    padding: 0.75rem 1.2rem;
+    padding: 0.85rem 1.5rem;
     background: var(--blanco);
     border: 1px solid var(--crema-oscuro);
     border-radius: 50px;
-    font-size: 0.9rem;
+    font-size: 0.92rem;
     color: var(--negro);
-    transition: border-color 0.25s, transform 0.25s;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(20,20,16,0.04);
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   }
-  .servicio-item:hover { border-color: var(--verde-claro); transform: translateY(-2px); }
+  .servicio-item:hover,
+  .servicio-item:focus,
+  .servicio-item:active,
+  .servicio-item.is-active {
+    background: var(--verde);
+    border-color: var(--verde);
+    color: var(--blanco);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(28,61,42,0.25);
+  }
+  .servicio-item:hover .punto,
+  .servicio-item:focus .punto,
+  .servicio-item:active .punto,
+  .servicio-item.is-active .punto {
+    background: var(--blanco);
+  }
   .servicio-item .punto {
     width: 7px; height: 7px;
     flex-shrink: 0;
     background: var(--verde-claro);
     border-radius: 50%;
+    transition: background 0.25s ease;
   }
   .servicio-nota {
     margin-top: 2.5rem;
@@ -666,6 +685,10 @@
   window.addEventListener('scroll', () => {
     if (window.scrollY > 60) nav.classList.add('scrolled');
     else nav.classList.remove('scrolled');
+  });
+
+  document.querySelectorAll('.servicio-item').forEach(item => {
+    item.addEventListener('click', () => item.classList.toggle('is-active'));
   });
 </script>
 
