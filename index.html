@@ -33,6 +33,9 @@
     -webkit-font-smoothing: antialiased;
   }
 
+  img { max-width: 100%; height: auto; }
+  html, body { max-width: 100%; }
+
   a { color: inherit; }
 
   .container { max-width: 1180px; margin: 0 auto; padding: 0 2.5rem; }
@@ -50,7 +53,7 @@
   .section-title {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
-    font-size: clamp(2rem, 4vw, 2.9rem);
+    font-size: clamp(1.7rem, 6vw, 2.9rem);
     line-height: 1.18;
     color: var(--verde);
   }
@@ -121,6 +124,71 @@
   }
   nav.scrolled .nav-links a { color: var(--gris); }
   .nav-links a:hover { color: var(--verde-claro); }
+
+  .nav-burger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 28px;
+    height: 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 110;
+  }
+  .nav-burger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--blanco);
+    border-radius: 2px;
+    transition: background 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+  }
+  nav.scrolled .nav-burger span { background: var(--verde); }
+  .nav-burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-burger.is-open span:nth-child(2) { opacity: 0; }
+  .nav-burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  nav.scrolled .nav-burger.is-open span { background: var(--verde); }
+
+  .nav-mobile-panel {
+    position: fixed;
+    top: 0; right: 0;
+    height: 100vh;
+    width: 78%;
+    max-width: 320px;
+    background: var(--blanco);
+    box-shadow: -10px 0 30px rgba(20,20,16,0.15);
+    z-index: 105;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.8rem;
+    padding: 2rem 2.5rem;
+    transform: translateX(100%);
+    transition: transform 0.35s ease;
+  }
+  .nav-mobile-panel.is-open { transform: translateX(0); }
+  .nav-mobile-panel a {
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--verde);
+    text-decoration: none;
+  }
+  .nav-mobile-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(20,20,16,0.35);
+    z-index: 104;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+  }
+  .nav-mobile-overlay.is-open { opacity: 1; pointer-events: auto; }
 
   /* HERO */
   .hero {
@@ -293,7 +361,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
     align-items: end;
-    margin-bottom: 3.5rem;
+    margin-bottom: 4rem;
   }
   .servicios-lista {
     display: flex;
@@ -340,15 +408,18 @@
     transition: background 0.25s ease;
   }
   .servicio-nota {
-    margin-top: 2.5rem;
-    font-size: 0.95rem;
-    line-height: 1.6;
+    margin-top: 3rem;
     color: var(--verde-medio);
     border-top: 1px solid var(--crema-oscuro);
-    padding-top: 1.8rem;
+    padding-top: 2.2rem;
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
+    font-size: 1.4rem;
+    line-height: 1.5;
     font-style: italic;
+    text-align: center;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* PROCESO */
@@ -487,6 +558,9 @@
   @media (max-width: 900px) {
     nav { padding: 1.2rem 1.5rem; }
     .nav-links { display: none; }
+    .nav-burger { display: flex; }
+    .br-desktop { display: none; }
+    .logo { font-size: 0.92rem; }
     .hero-content { padding: 7.5rem 1.5rem 4.5rem; }
     section { padding: 5rem 0; }
     .container { padding: 0 1.5rem; }
@@ -498,6 +572,10 @@
     .proceso-steps::before { display: none; }
     footer { grid-template-columns: 1fr; gap: 1rem; text-align: center; }
     .footer-left, .footer-logo, .footer-copy { justify-self: center; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    .proceso-steps { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -518,7 +596,19 @@
     <li><a href="#equipo">Equipo</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
+  <button class="nav-burger" id="navBurger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="nav-mobile-overlay" id="navOverlay"></div>
+<div class="nav-mobile-panel" id="navMobilePanel">
+  <a href="#concepto">Concepto</a>
+  <a href="#servicios">Servicios</a>
+  <a href="#proceso">Proceso</a>
+  <a href="#equipo">Equipo</a>
+  <a href="#contacto">Contacto</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -538,7 +628,7 @@
   <div class="container concepto-grid">
     <div class="concepto-text">
       <p class="section-label">Lo que hacemos</p>
-      <h2 class="section-title">Más rentabilidad para tu vivienda,<br>sin que te suponga más trabajo.</h2>
+      <h2 class="section-title">Más rentabilidad para tu vivienda,<span class="br-desktop"><br></span> sin que te suponga más trabajo.</h2>
       <p class="section-body">Trabajamos con propietarios que ya tienen su vivienda en marcha y quieren sacarle más partido sin complicarse. Nos adaptamos a tu gestión: ofrecemos distintos servicios que se pueden combinar según lo que necesite cada vivienda. El objetivo siempre es el mismo, un aumento de la rentabilidad y una mejor experiencia para los huéspedes.</p>
 
       <div class="pilares">
@@ -689,6 +779,28 @@
 
   document.querySelectorAll('.servicio-item').forEach(item => {
     item.addEventListener('click', () => item.classList.toggle('is-active'));
+  });
+
+  const navBurger = document.getElementById('navBurger');
+  const navMobilePanel = document.getElementById('navMobilePanel');
+  const navOverlay = document.getElementById('navOverlay');
+
+  function closeMobileNav() {
+    navBurger.classList.remove('is-open');
+    navMobilePanel.classList.remove('is-open');
+    navOverlay.classList.remove('is-open');
+  }
+
+  navBurger.addEventListener('click', () => {
+    const isOpen = navMobilePanel.classList.contains('is-open');
+    navBurger.classList.toggle('is-open', !isOpen);
+    navMobilePanel.classList.toggle('is-open', !isOpen);
+    navOverlay.classList.toggle('is-open', !isOpen);
+  });
+
+  navOverlay.addEventListener('click', closeMobileNav);
+  navMobilePanel.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobileNav);
   });
 </script>
 
