@@ -579,7 +579,7 @@
     <li><a href="#concepto">Concepto</a></li>
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#proceso">Proceso</a></li>
-    <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#equipo">Objetivo</a></li>
     <li><a href="#novedades">Novedades</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -593,7 +593,7 @@
   <a href="#concepto">Concepto</a>
   <a href="#servicios">Servicios</a>
   <a href="#proceso">Proceso</a>
-  <a href="#equipo">Equipo</a>
+  <a href="#equipo">Objetivo</a>
   <a href="#novedades">Novedades</a>
   <a href="#contacto">Contacto</a>
 </div>
@@ -721,10 +721,10 @@
 </section>
 
 <!-- EQUIPO -->
-<section class="equipo" id="equipo">
+<section class="equipo" id="equipo" style="padding-bottom:1rem;">
   <div class="container equipo-grid">
     <div class="equipo-text">
-      <p class="section-label">El equipo</p>
+      <p class="section-label">Objetivo</p>
       <h2 class="section-title">Una cartera reducida,<br><em>muy cuidada.</em></h2>
       <p class="section-body equipo-intro" style="margin-top:1.4rem; margin-bottom:0.8rem;">No buscamos crecer en volumen ni convertirnos en una empresa de gestión masiva. Preferimos trabajar con pocas propiedades, seleccionadas con criterio, a las que podamos dedicar la atención que merecen.</p>
       <p style="font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.3rem; color:var(--verde); margin-bottom:0;">Mejor estrategia y mejor gestión = mayor rentabilidad</p>
@@ -736,90 +736,155 @@
 </section>
 
 <!-- NOVEDADES -->
-<section id="novedades">
+<section id="novedades" style="padding-top:0.5rem; background:var(--crema);">
   <div class="container">
-    <p class="section-label">Novedades</p>
-    <h2 class="section-title">Lo último en <em>@atmossphera.studio</em></h2>
-    <p class="section-body" style="margin-top:1.4rem;">
-      Proyectos, viviendas y detalles del día a día. Se actualiza solo.
-    </p>
 
-    <div id="nov-grid" class="nov-grid"></div>
+    <div class="nov-carousel">
+      <button class="nov-arrow nov-prev" aria-label="Anterior">&lsaquo;</button>
+      <div id="nov-track" class="nov-track"></div>
+      <button class="nov-arrow nov-next" aria-label="Siguiente">&rsaquo;</button>
+    </div>
+    <div id="nov-dots" class="nov-dots"></div>
 
     <a class="nov-cta"
        href="https://www.instagram.com/atmossphera.studio/"
-       target="_blank" rel="noopener">Seguir en Instagram</a>
+       target="_blank" rel="noopener">Síguenos en Instagram</a>
   </div>
 </section>
 
 <script>
   (async function () {
-    var grid = document.getElementById("nov-grid");
+    var track = document.getElementById("nov-track");
+    var dotsWrap = document.getElementById("nov-dots");
     try {
       var res = await fetch("assets/instagram/posts.json", { cache: "no-cache" });
       var data = await res.json();
-      if (!data.posts || !data.posts.length) {
-        grid.innerHTML = '<p class="nov-empty">Aún no hay publicaciones.</p>';
+      var posts = (data.posts || []).slice(0, 9);
+      if (!posts.length) {
+        track.innerHTML = '<p class="nov-empty">Aún no hay publicaciones.</p>';
         return;
       }
-      grid.innerHTML = data.posts.map(function (p) {
+      track.innerHTML = posts.map(function (p) {
         var text = (p.caption || "").split("\n")[0];
-        if (text.length > 90) text = text.slice(0, 90) + "…";
+        if (text.length > 80) text = text.slice(0, 80) + "…";
         var play = p.isVideo ? '<span class="nov-play">▶</span>' : "";
         return (
           '<a class="nov-card" href="' + p.permalink + '" target="_blank" rel="noopener">' +
-            '<div class="nov-imgwrap"><img loading="lazy" src="' + p.image + '" alt="">' + play + '</div>' +
-            (text ? '<p class="nov-caption">' + text + '</p>' : '') +
+            '<img loading="lazy" src="' + p.image + '" alt="">' + play +
+            (text ? '<span class="nov-cap">' + text + '</span>' : '') +
           '</a>'
         );
       }).join("");
+
+      var car = track.closest(".nov-carousel");
+      function pages() { return Math.max(1, Math.ceil((track.scrollWidth - 4) / track.clientWidth)); }
+      function current() { return Math.round(track.scrollLeft / track.clientWidth); }
+      function go(i) { track.scrollTo({ left: i * track.clientWidth, behavior: "smooth" }); }
+      function next() { var c = current(); go(c >= pages() - 1 ? 0 : c + 1); }
+      function prev() { var c = current(); go(c <= 0 ? pages() - 1 : c - 1); }
+
+      function buildDots() {
+        dotsWrap.innerHTML = "";
+        var n = pages();
+        for (var i = 0; i < n; i++) {
+          var d = document.createElement("button");
+          d.className = "nov-dot" + (i === current() ? " active" : "");
+          d.setAttribute("aria-label", "Ir al grupo " + (i + 1));
+          (function (idx) { d.addEventListener("click", function () { go(idx); }); })(i);
+          dotsWrap.appendChild(d);
+        }
+      }
+      function sync() {
+        var c = current();
+        Array.prototype.forEach.call(dotsWrap.children, function (d, idx) {
+          d.classList.toggle("active", idx === c);
+        });
+      }
+      buildDots();
+      track.addEventListener("scroll", function () { window.requestAnimationFrame(sync); });
+      document.querySelector(".nov-next").addEventListener("click", next);
+      document.querySelector(".nov-prev").addEventListener("click", prev);
+
+      var timer = setInterval(next, 4000);
+      function pause() { clearInterval(timer); }
+      function resume() { clearInterval(timer); timer = setInterval(next, 4000); }
+      car.addEventListener("mouseenter", pause);
+      car.addEventListener("mouseleave", resume);
+      track.addEventListener("touchstart", pause, { passive: true });
+      track.addEventListener("touchend", resume, { passive: true });
+
+      var rt;
+      window.addEventListener("resize", function () {
+        clearTimeout(rt);
+        rt = setTimeout(function () { buildDots(); sync(); }, 200);
+      });
     } catch (e) {
-      grid.innerHTML = '<p class="nov-empty">No se pudo cargar el feed.</p>';
+      track.innerHTML = '<p class="nov-empty">No se pudo cargar el feed.</p>';
     }
   })();
 </script>
 
 <style>
-  .nov-grid {
-    display: grid; gap: 1.2rem; margin-top: 3rem;
-    grid-template-columns: repeat(3, 1fr);
+  .nov-carousel { position: relative; margin-top: 1.5rem; }
+  .nov-track {
+    display: flex; gap: 1rem; overflow-x: auto;
+    scroll-snap-type: x mandatory; scroll-behavior: smooth;
+    -ms-overflow-style: none; scrollbar-width: none;
   }
-  @media (max-width: 760px) { .nov-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (max-width: 460px) { .nov-grid { grid-template-columns: 1fr; } }
+  .nov-track::-webkit-scrollbar { display: none; }
   .nov-card {
-    display: block; text-decoration: none; color: inherit;
-    background: var(--blanco);
-    border: 1px solid var(--crema-oscuro);
-    border-radius: 14px; overflow: hidden;
-    transition: transform .18s ease, box-shadow .18s ease;
-  }
-  .nov-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 30px rgba(28,61,42,.12);
-  }
-  .nov-imgwrap {
+    flex: 0 0 calc((100% - 3rem) / 4); scroll-snap-align: start;
     position: relative; aspect-ratio: 1 / 1;
-    background: var(--crema-oscuro);
+    border-radius: 12px; overflow: hidden;
+    background: var(--crema-oscuro); display: block; text-decoration: none;
   }
-  .nov-imgwrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (max-width: 760px) { .nov-card { flex-basis: calc((100% - 2rem) / 3); } }
+  @media (max-width: 460px) { .nov-card { flex-basis: calc((100% - 1rem) / 2); } }
+  .nov-card img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    transition: transform .4s ease;
+  }
+  .nov-card:hover img { transform: scale(1.05); }
+  .nov-cap {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    padding: 1.2rem .7rem .6rem; color: #fff;
+    font-size: .78rem; line-height: 1.35;
+    background: linear-gradient(to top, rgba(0,0,0,.72), rgba(0,0,0,0));
+    opacity: 0; transition: opacity .25s ease;
+  }
+  .nov-card:hover .nov-cap { opacity: 1; }
   .nov-play {
-    position: absolute; top: 10px; right: 12px;
-    color: #fff; font-size: .9rem; text-shadow: 0 1px 4px rgba(0,0,0,.5);
+    position: absolute; top: 12px; right: 14px;
+    color: #fff; font-size: .95rem; text-shadow: 0 1px 4px rgba(0,0,0,.6);
   }
-  .nov-caption {
-    margin: 0; padding: 1rem 1.1rem;
-    font-size: .92rem; line-height: 1.5; color: var(--gris);
+  .nov-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%); z-index: 2;
+    width: 42px; height: 42px; border-radius: 50%; border: none; cursor: pointer;
+    background: var(--verde-medio); color: var(--crema);
+    font-size: 1.5rem; line-height: 1;
+    display: flex; align-items: center; justify-content: center;
+    opacity: .9; transition: opacity .2s ease;
   }
+  .nov-arrow:hover { opacity: 1; }
+  .nov-prev { left: -10px; }
+  .nov-next { right: -10px; }
+  @media (max-width: 760px) { .nov-arrow { display: none; } }
+  .nov-dots { display: flex; gap: 8px; justify-content: center; margin-top: 1.6rem; }
+  .nov-dot {
+    width: 8px; height: 8px; border-radius: 50%; padding: 0; border: none;
+    background: var(--crema-oscuro); cursor: pointer; transition: background .2s ease;
+  }
+  .nov-dot.active { background: var(--verde-medio); }
   .nov-empty { color: var(--gris); margin-top: 2rem; }
   .nov-cta {
-    display: inline-block; margin-top: 3rem;
+    display: block; width: fit-content; margin: 2.5rem auto 0;
     padding: .9rem 2rem; border-radius: 999px;
-    background: var(--verde); color: var(--crema);
+    background: var(--verde-medio); color: var(--crema);
     font-weight: 600; font-size: .9rem; letter-spacing: .02em;
     text-decoration: none;
     transition: background .18s ease, transform .18s ease;
   }
-  .nov-cta:hover { background: var(--verde-medio); transform: translateY(-2px); }
+  .nov-cta:hover { background: var(--verde); transform: translateY(-2px); }
 </style>
 
 <!-- CONTACTO -->
@@ -829,7 +894,7 @@
     <h2 class="section-title">¿Quieres aumentar<br><em>tu rentabilidad?</em></h2>
     <p class="contacto-body">Escríbenos y hablamos sobre qué servicios encajan mejor en tu situación actual.</p>
     <div class="contacto-links">
-      <a href="https://www.instagram.com/atmossphera.studio/" target="_blank" class="btn-primary">Escribir por Instagram</a>
+      <a href="https://www.instagram.com/atmossphera.studio/" target="_blank" class="btn-primary">Contáctanos</a>
     </div>
     <div class="contacto-directo">
       <a href="mailto:atmossphera360@gmail.com">atmossphera360@gmail.com</a>
