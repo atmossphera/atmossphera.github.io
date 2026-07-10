@@ -580,6 +580,7 @@
     <li><a href="#servicios">Servicios</a></li>
     <li><a href="#proceso">Proceso</a></li>
     <li><a href="#equipo">Equipo</a></li>
+    <li><a href="#novedades">Novedades</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
   <button class="nav-burger" id="navBurger" aria-label="Abrir menú">
@@ -593,6 +594,7 @@
   <a href="#servicios">Servicios</a>
   <a href="#proceso">Proceso</a>
   <a href="#equipo">Equipo</a>
+  <a href="#novedades">Novedades</a>
   <a href="#contacto">Contacto</a>
 </div>
 
@@ -732,6 +734,93 @@
     </div>
   </div>
 </section>
+
+<!-- NOVEDADES -->
+<section id="novedades">
+  <div class="container">
+    <p class="section-label">Novedades</p>
+    <h2 class="section-title">Lo último en <em>@atmossphera.studio</em></h2>
+    <p class="section-body" style="margin-top:1.4rem;">
+      Proyectos, viviendas y detalles del día a día. Se actualiza solo.
+    </p>
+
+    <div id="nov-grid" class="nov-grid"></div>
+
+    <a class="nov-cta"
+       href="https://www.instagram.com/atmossphera.studio/"
+       target="_blank" rel="noopener">Seguir en Instagram</a>
+  </div>
+</section>
+
+<script>
+  (async function () {
+    var grid = document.getElementById("nov-grid");
+    try {
+      var res = await fetch("assets/instagram/posts.json", { cache: "no-cache" });
+      var data = await res.json();
+      if (!data.posts || !data.posts.length) {
+        grid.innerHTML = '<p class="nov-empty">Aún no hay publicaciones.</p>';
+        return;
+      }
+      grid.innerHTML = data.posts.map(function (p) {
+        var text = (p.caption || "").split("\n")[0];
+        if (text.length > 90) text = text.slice(0, 90) + "…";
+        var play = p.isVideo ? '<span class="nov-play">▶</span>' : "";
+        return (
+          '<a class="nov-card" href="' + p.permalink + '" target="_blank" rel="noopener">' +
+            '<div class="nov-imgwrap"><img loading="lazy" src="' + p.image + '" alt="">' + play + '</div>' +
+            (text ? '<p class="nov-caption">' + text + '</p>' : '') +
+          '</a>'
+        );
+      }).join("");
+    } catch (e) {
+      grid.innerHTML = '<p class="nov-empty">No se pudo cargar el feed.</p>';
+    }
+  })();
+</script>
+
+<style>
+  .nov-grid {
+    display: grid; gap: 1.2rem; margin-top: 3rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 760px) { .nov-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 460px) { .nov-grid { grid-template-columns: 1fr; } }
+  .nov-card {
+    display: block; text-decoration: none; color: inherit;
+    background: var(--blanco);
+    border: 1px solid var(--crema-oscuro);
+    border-radius: 14px; overflow: hidden;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .nov-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(28,61,42,.12);
+  }
+  .nov-imgwrap {
+    position: relative; aspect-ratio: 1 / 1;
+    background: var(--crema-oscuro);
+  }
+  .nov-imgwrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .nov-play {
+    position: absolute; top: 10px; right: 12px;
+    color: #fff; font-size: .9rem; text-shadow: 0 1px 4px rgba(0,0,0,.5);
+  }
+  .nov-caption {
+    margin: 0; padding: 1rem 1.1rem;
+    font-size: .92rem; line-height: 1.5; color: var(--gris);
+  }
+  .nov-empty { color: var(--gris); margin-top: 2rem; }
+  .nov-cta {
+    display: inline-block; margin-top: 3rem;
+    padding: .9rem 2rem; border-radius: 999px;
+    background: var(--verde); color: var(--crema);
+    font-weight: 600; font-size: .9rem; letter-spacing: .02em;
+    text-decoration: none;
+    transition: background .18s ease, transform .18s ease;
+  }
+  .nov-cta:hover { background: var(--verde-medio); transform: translateY(-2px); }
+</style>
 
 <!-- CONTACTO -->
 <section class="contacto" id="contacto">
