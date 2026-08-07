@@ -218,6 +218,17 @@ footer{background:var(--pine);color:#9DB39A;padding:38px 0;font-size:.85rem}.foo
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;scroll-behavior:auto}
 }
+
+.insta{background:var(--paper)}
+.ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:1.5rem}
+.ig-grid a{position:relative;display:block;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:var(--fog);border:1px solid var(--line)}
+.ig-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
+.ig-grid a:hover img{transform:scale(1.06)}
+.ig-grid .play{position:absolute;right:8px;top:6px;color:#fff;font-size:.8rem;text-shadow:0 1px 4px rgba(0,0,0,.55)}
+.ig-empty{color:var(--muted);margin-top:1.2rem;font-size:.95rem;max-width:60ch}
+.ig-cta{margin-top:1.5rem}
+@media(max-width:900px){.ig-grid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:560px){.ig-grid{grid-template-columns:repeat(3,1fr);gap:8px}}
 </style>
 </head>
 <body>
@@ -475,6 +486,16 @@ footer{background:var(--pine);color:#9DB39A;padding:38px 0;font-size:.85rem}.foo
 </section>
 
 
+<section class="sec insta" id="novedades">
+  <div class="wrap">
+    <div class="eyebrow">En Instagram</div>
+    <h2 class="sec-ttl">lo último de @atmossphera.studio</h2>
+    <p class="lead">Cantabria, las viviendas que gestionamos y el día a día del proyecto. Las publicaciones se actualizan solas desde Instagram.</p>
+    <div id="igGrid" class="ig-grid"></div>
+    <a class="btn btn-ghost ig-cta" href="https://www.instagram.com/atmossphera.studio/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+  </div>
+</section>
+
 <section class="sec contact" id="contacto">
   <div class="wrap">
     <h2>¿quieres aumentar tu rentabilidad?</h2>
@@ -597,6 +618,25 @@ footer{background:var(--pine);color:#9DB39A;padding:38px 0;font-size:.85rem}.foo
     });
   });
   paint();
+})();
+</script>
+
+<script>
+(function(){
+  var grid=document.getElementById('igGrid'); if(!grid) return;
+  var N=6;
+  var esc=function(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};
+  fetch('assets/instagram/posts.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+    var posts=(d.posts||[]).slice(0,N);
+    if(!posts.length){grid.outerHTML='<p class="ig-empty">Aún no hay publicaciones.</p>';return;}
+    grid.innerHTML=posts.map(function(p){
+      var play=p.isVideo?'<span class="play">\u25B6</span>':'';
+      var cap=esc((p.caption||'Publicación en Instagram').slice(0,60));
+      return '<a href="'+p.permalink+'" target="_blank" rel="noopener" aria-label="'+cap+'"><img loading="lazy" src="'+p.image+'" alt="">'+play+'</a>';
+    }).join('');
+  }).catch(function(){
+    grid.outerHTML='<p class="ig-empty">El feed se carga al publicar la web en GitHub Pages (se actualiza solo desde Instagram cada pocas horas).</p>';
+  });
 })();
 </script>
 </body>
