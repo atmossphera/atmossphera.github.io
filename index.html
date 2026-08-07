@@ -353,9 +353,9 @@ footer{background:var(--pine);color:#9DB39A;padding:38px 0;font-size:.85rem}.foo
         </div>
         <div class="rrow up">
           <div class="k">Con Atmossphera Studio</div>
-          <div class="v" id="rNew">12.500 €</div>
+          <div class="v" id="rNew">10.483 €</div>
           <div class="bar b"><i id="barB" style="width:60%"></i></div>
-          <div class="updelta"><span class="pct" id="deltaPct">+49%</span><span style="color:var(--muted);font-size:.9rem" id="deltaEur">4.100 € más al año</span></div>
+          <div class="updelta"><span class="pct" id="deltaPct">+25%</span><span style="color:var(--muted);font-size:.9rem" id="deltaEur">2.083 € más al año</span></div>
         </div>
       </div>
     </div>
@@ -529,8 +529,8 @@ footer{background:var(--pine);color:#9DB39A;padding:38px 0;font-size:.85rem}.foo
     const p=+price.value, n=+nights.value;
     pOut.textContent=p+' €'; nOut.textContent=n;
     const now=p*n;
-    const newP=p*1.15;                      // precio ajustado al mercado
-    const newN=Math.min(300, Math.round(n*1.28)); // más noches con el huésped correcto
+    const newP=p*1.12;                      // precio ajustado al mercado
+    const newN=Math.min(300, Math.round(n*1.12)); // más noches con el huésped correcto
     const nw=newP*newN;
     rNow.textContent=eur(now); rNew.textContent=eur(nw);
     const pct=Math.round((nw/now-1)*100);
