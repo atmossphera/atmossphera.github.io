@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atmossphera Studio · Gestión de alojamientos en Cantabria</title>
-<meta name="description" content="Aumentamos la rentabilidad de tu vivienda turística en Cantabria con tecnología, datos y naturaleza, sin que te suponga más trabajo.">
+<title>Mercado · Atmossphera Studio</title>
+<meta name="description" content="Datos reales del mercado turístico en Cantabria: ocupación, tecnología y competencia por zonas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -137,6 +137,51 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .step .st-h{font-family:var(--serif);font-size:1.2rem;text-transform:none}
 .step p{color:var(--muted);margin:.3rem 0 0}
 
+/* market */
+.market{background:var(--paper);position:relative}
+.impactur{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:48px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:26px 22px}
+.stat .n{font-family:var(--serif);font-size:2.3rem;color:var(--pine);line-height:1}
+.stat .d{font-size:.92rem;color:var(--muted);margin-top:.6rem}
+.src{font-size:.78rem;color:var(--muted);margin-top:16px;font-style:italic}
+
+.divide{margin:88px 0 0;padding-top:78px;border-top:1px solid var(--line)}
+.mk-agg{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;margin-top:40px}
+.aggnums{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.aggnums .a{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px}
+.aggnums .a .n{font-family:var(--serif);font-size:1.9rem;color:var(--clay);line-height:1}
+.aggnums .a.gr .n{color:var(--moss)}
+.aggnums .a .d{font-size:.86rem;color:var(--muted);margin-top:.4rem}
+.mk-body p{color:var(--muted)}
+.mk-body h3{font-size:1.9rem;text-transform:none;margin-bottom:1rem;color:var(--ink)}
+
+/* map */
+.mapblock{margin-top:96px;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:40px}
+.map-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+.map-head h3{font-size:1.7rem;text-transform:none;max-width:20ch}
+.metricsel{display:inline-flex;background:var(--fog);border:1px solid var(--line);border-radius:100px;padding:4px}
+.metricsel button{border:0;background:none;font-family:var(--sans);font-weight:600;font-size:.82rem;padding:.55rem 1rem;border-radius:100px;cursor:pointer;color:var(--muted)}
+.metricsel button[aria-pressed=true]{background:var(--pine);color:var(--paper)}
+.map-stage{position:relative;display:grid;grid-template-columns:1fr 250px;gap:30px;align-items:center}
+.map-svg-wrap{position:relative}
+.map-svg-wrap svg{width:100%;height:auto;display:block;overflow:visible}
+.cant-out{fill:#EDF2EA;stroke:var(--sage);stroke-width:1.4}
+.zone{cursor:pointer;transition:stroke-width .15s, opacity .15s}
+.zone circle{stroke:#fff;stroke-width:1.6}
+.zone:hover circle,.zone:focus circle{stroke:var(--pine);stroke-width:2.4}
+.zlabel{font-size:11px;fill:var(--muted);font-family:var(--sans);pointer-events:none}
+.tooltip{position:absolute;pointer-events:none;background:var(--pine);color:#EAF0E6;padding:12px 14px;border-radius:10px;font-size:.82rem;min-width:172px;opacity:0;transform:translateY(4px);transition:.14s;z-index:5;box-shadow:0 8px 24px rgba(0,0,0,.22)}
+.tooltip.on{opacity:1;transform:translateY(0)}
+.tooltip b{font-family:var(--serif);font-size:1rem;display:block;margin-bottom:6px;text-transform:none;color:#fff}
+.tooltip .tl{display:flex;justify-content:space-between;gap:16px;margin:2px 0;color:#C6D3C2}
+.tooltip .tl em{font-style:normal;color:#fff;font-weight:600}
+.map-side .legend-ttl{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:var(--moss);font-weight:600;margin-bottom:14px}
+.legbar{height:12px;border-radius:8px;background:linear-gradient(90deg,var(--good),var(--amber),var(--clay));margin-bottom:8px}
+.legends{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted)}
+.legnote{font-size:.85rem;color:var(--muted);margin-top:22px;line-height:1.5}
+.legnote b{color:var(--ink);font-weight:600}
+.map-foot{font-size:.82rem;color:var(--muted);margin-top:24px;font-style:italic}
+
 /* about */
 .about{background:var(--pine);color:#EAF0E6}
 .about-in{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
@@ -157,17 +202,18 @@ footer{background:var(--pine);color:#9DB39A;padding:38px 0;font-size:.85rem}.foo
 @media(max-width:900px){
   .menu,.nav-cta{display:none}
   .burger{display:block}
-  .pillars{grid-template-columns:1fr 1fr}
-  .calc-grid,.split,.about-in{grid-template-columns:1fr}
+  .pillars,.impactur{grid-template-columns:1fr 1fr}
+  .calc-grid,.split,.mk-agg,.about-in,.map-stage{grid-template-columns:1fr}
   .band-in{grid-template-columns:1fr}
   .band .big{white-space:normal}
   .step{grid-template-columns:44px 1fr;gap:16px}
   .step .st-when{grid-column:2}
   .svc-list{columns:1}
+  .map-stage{gap:20px}
   .sec{padding:72px 0}
 }
 @media(max-width:560px){
-  .pillars{grid-template-columns:1fr}
+  .pillars,.impactur,.aggnums{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;scroll-behavior:auto}
@@ -189,19 +235,19 @@ footer{background:var(--pine);color:#9DB39A;padding:38px 0;font-size:.85rem}.foo
 
 <header class="nav">
   <div class="wrap nav-in">
-    <a class="brand" href="#top">
+    <a class="brand" href="index.html#top">
       <span class="mark"><img src="data:image/png;base64,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" alt=""></span>
       Atmossphera Studio
     </a>
     <nav>
       <ul class="menu">
-        <li><a href="#concepto">Concepto</a></li>
-        <li><a href="#calculadora">Calculadora</a></li>
-        <li><a href="#nosotros">Sobre nosotros</a></li>
-        <li><a href="mercado.html">Mercado</a></li>
+        <li><a href="index.html#concepto">Concepto</a></li>
+        <li><a href="index.html#calculadora">Calculadora</a></li>
+        <li><a href="index.html#nosotros">Sobre nosotros</a></li>
+        <li><a href="mercado.html" style="color:var(--pine)">Mercado</a></li>
       </ul>
     </nav>
-    <a class="nav-cta" href="#contacto">Diagnóstico gratis</a>
+    <a class="nav-cta" href="index.html#contacto">Diagnóstico gratis</a>
     <button class="burger" aria-label="Menú" onclick="document.querySelector('.menu').style.display= (this.dataset.o?'':'flex'); this.dataset.o=this.dataset.o?'':'1'; document.querySelector('.menu').style.cssText+=';position:absolute;top:66px;left:0;right:0;flex-direction:column;background:var(--paper);padding:18px 24px;border-bottom:1px solid var(--line)'">
       <span></span><span></span><span></span>
     </button>
@@ -209,198 +255,70 @@ footer{background:var(--pine);color:#9DB39A;padding:38px 0;font-size:.85rem}.foo
 </header>
 
 <a id="top"></a>
-<section class="hero">
-  <svg class="contours" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-    <g fill="none" stroke="#B9C9B4" stroke-width="1.1">
-      <path d="M-50 480 C 250 400 450 520 700 430 S 1150 360 1300 440"/>
-      <path d="M-50 430 C 250 350 450 470 700 380 S 1150 310 1300 390"/>
-      <path d="M-50 380 C 250 300 450 420 700 330 S 1150 260 1300 340"/>
-      <path d="M-50 330 C 250 250 450 370 700 280 S 1150 210 1300 290"/>
-      <path d="M-50 280 C 250 200 450 320 700 230 S 1150 160 1300 240"/>
-      <path d="M-50 230 C 250 150 450 270 700 180 S 1150 110 1300 190"/>
-      <path d="M-50 180 C 250 100 450 220 700 130 S 1150 60 1300 140"/>
-    </g>
-  </svg>
-  <div class="wrap hero-in">
-    <h1>subimos tus ingresos con <span class="em">datos</span>,<br>no con más trabajo para ti</h1>
-    <p class="sub">Gestionamos tu vivienda turística en Cantabria con tecnología y pricing en tiempo real, y potenciamos la conexión entre turismo y naturaleza para que cada estancia valga más. Tú no cambias nada de lo que ya usas.</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="#contacto">Pide tu diagnóstico gratuito</a>
-      <a class="btn btn-ghost" href="mercado.html">Ver el mercado de Cantabria</a>
-    </div>
-    <div class="hero-stats">
-      <div class="s"><div class="n">+15 a 30%</div><div class="l">de rentabilidad anual de media para nuestros clientes</div></div>
-      <div class="s"><div class="n">1 mes</div><div class="l">gratis y sin permanencia para que lo compruebes</div></div>
-      <div class="s"><div class="n">12,2%</div><div class="l">del PIB de Cantabria ya es turismo, en máximos históricos</div></div>
-    </div>
-  </div>
-</section>
-
-<div class="strip" aria-hidden="true">
-  <div class="track">
-    <span>Oyambre<i></i></span><span>Comillas</span><span>San Vicente de la Barquera</span><span>Santillana del Mar</span><span>Udías</span><span>Parque Natural de Oyambre</span>
-    <span>Oyambre</span><span>Comillas</span><span>San Vicente de la Barquera</span><span>Santillana del Mar</span><span>Udías</span><span>Parque Natural de Oyambre</span>
-  </div>
-</div>
-
-<section class="sec concept" id="concepto">
+<section class="sec" style="padding-bottom:0">
   <div class="wrap">
-    <div class="eyebrow">Lo que hacemos</div>
-    <h2 class="sec-ttl">aumentamos tu rentabilidad, sin más trabajo para ti</h2>
-    <p class="lead">Trabajamos con propietarios que ya tienen su vivienda, casa rural o apartamentos en marcha. Conectamos tu PMS, tu anuncio de Booking, tu Airbnb y tu página web, y le sacamos el máximo partido. El objetivo es claro: los mejores inquilinos posibles y más ingresos para ti, sin que cambies nada de lo que ya usas.</p>
-    <div class="pillars">
-      <div class="pillar"><div class="num">01</div><h3>Precio ajustado al mercado, día a día</h3><p>Ajustado a la demanda, a los alojamientos cercanos y a los eventos importantes. Pricing dinámico real, no solo por temporada.</p></div>
-      <div class="pillar"><div class="num">02</div><h3>El huésped correcto, mejores reseñas</h3><p>Pre-filtramos las reservas y cuidamos los detalles para conseguir reseñas de calidad que transmitan confianza y aumenten la rentabilidad.</p></div>
-      <div class="pillar"><div class="num">03</div><h3>Naturaleza presente en cada vivienda</h3><p>Introducimos o mejoramos la vegetación de cada alojamiento. Cantabria es naturaleza, y eso se nota en las fotos y en la estancia.</p></div>
-    </div>
+    <a href="index.html" style="font-size:.85rem;color:var(--moss);text-decoration:none">&larr; Volver a Atmossphera Studio</a>
   </div>
 </section>
 
-<section class="sec about" id="nosotros">
-  <div class="wrap about-in">
-    <div>
-      <div class="eyebrow" style="color:var(--sage)">Nuestro objetivo</div>
-      <h2 class="sec-ttl">una cartera reducida, muy cuidada</h2>
-      <p class="lead">No buscamos crecer en volumen ni convertirnos en una empresa de gestión masiva. Preferimos trabajar con pocas propiedades, seleccionadas con criterio, a las que podamos dedicar la atención que merecen.</p>
-    </div>
-    <div class="about-map">
-      <svg viewBox="0 0 1000 620" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M741.9,0.0 L767.7,4.7 L796.3,33.3 L835.7,41.6 L836.3,58.5 L815.6,55.6 L799.9,71.6 L816.4,66.3 L815.8,88.4 L824.4,62.5 L839.0,80.9 L898.7,76.1 L900.4,89.3 L959.0,96.5 L956.3,101.5 L964.5,111.8 L999.0,129.2 L1000.0,166.6 L965.9,185.4 L956.6,165.0 L924.7,180.2 L893.6,170.6 L889.1,189.9 L825.0,223.8 L843.4,306.4 L734.1,293.4 L728.9,277.3 L706.2,268.1 L674.6,320.3 L645.1,332.9 L639.4,348.7 L590.9,346.0 L599.8,362.5 L589.2,381.6 L565.1,380.3 L554.2,401.0 L528.5,413.9 L506.2,469.6 L516.3,485.0 L542.3,482.8 L540.0,494.9 L579.1,450.4 L600.5,471.1 L579.2,495.2 L555.1,482.9 L563.9,504.8 L545.4,503.3 L561.2,510.5 L551.0,526.8 L571.6,533.9 L581.0,502.8 L598.1,512.9 L609.1,566.7 L582.0,586.1 L563.0,571.6 L553.3,600.7 L514.2,609.0 L501.1,600.2 L498.8,549.9 L468.7,605.0 L453.0,606.3 L439.0,580.8 L412.7,583.8 L391.8,561.3 L407.9,544.9 L418.2,551.8 L426.7,529.6 L412.7,517.9 L374.8,537.2 L359.5,449.0 L295.9,436.1 L266.7,385.9 L237.6,366.8 L228.6,365.2 L221.0,382.8 L194.4,375.8 L172.3,398.3 L144.3,385.2 L125.5,400.6 L75.7,400.1 L63.6,391.3 L63.2,368.5 L50.2,369.2 L50.0,353.9 L20.3,339.3 L0.0,312.5 L9.9,287.1 L2.0,270.4 L69.0,260.9 L77.5,223.4 L70.9,206.6 L129.2,198.2 L144.1,171.7 L174.2,181.8 L178.6,197.4 L192.9,189.8 L193.6,143.3 L183.9,127.1 L200.0,96.7 L271.8,99.7 L300.5,86.8 L307.9,98.6 L336.0,101.2 L397.8,90.7 L453.1,60.7 L513.4,58.6 L526.1,46.5 L532.9,34.2 L562.7,34.4 L627.2,17.6 L640.1,37.4 L610.1,51.7 L603.6,49.9 L609.6,61.7 L600.5,63.2 L616.3,70.1 L605.2,80.6 L609.1,90.1 L630.8,74.6 L623.7,65.6 L632.6,51.7 L639.0,54.2 L650.2,50.0 L631.9,44.6 L657.0,43.8 L741.9,0.0 Z" fill="none" stroke="var(--sage)" stroke-width="6"/></svg>
-    </div>
-  </div>
-</section>
-
-
-
-<section class="sec calc" id="calculadora">
+<section class="sec market" id="mercado">
   <div class="wrap">
-    <div class="eyebrow">La calculadora</div>
-    <h2 class="sec-ttl">¿cuánto puede generar tu vivienda?</h2>
-    <p class="lead">Muchos propietarios alquilan por debajo de lo que el mercado pagaría y dejan noches sin llenar. Ajusta tu precio y tus noches de ahora, y mira la diferencia.</p>
-    <div class="calc-grid">
-      <div class="calc-panel">
-        <div class="cap">Tu situación actual</div>
-        <div class="field">
-          <label>Precio medio por noche <b id="pOut">120 €</b></label>
-          <input type="range" id="price" min="40" max="500" step="5" value="120">
-        </div>
-        <div class="field">
-          <label>Noches que alquilas al año <b id="nOut">70</b></label>
-          <input type="range" id="nights" min="20" max="250" step="5" value="70">
-        </div>
-        <p class="finenote">Mueve las barras o ajústalas a tus números reales.</p>
+    <div class="eyebrow">Tendencia mercado Cantabria</div>
+    <h2 class="sec-ttl">el turismo en Cantabria está en máximos, y el mercado lo sabe</h2>
+    <p class="lead">No lo decimos nosotros. Estos son datos públicos del último estudio de impacto del turismo en la comunidad. Cuentan por qué este es un buen momento para poner tu vivienda a trabajar de verdad.</p>
+
+    <div class="impactur">
+      <div class="stat"><div class="n">12,2%</div><div class="d">del PIB de Cantabria ya es turismo. Máximo histórico, un 40% más que en 2019.</div></div>
+      <div class="stat"><div class="n">+64%</div><div class="d">ha crecido el gasto del turista extranjero desde 2019, el que más deja en destino.</div></div>
+      <div class="stat"><div class="n">+80%</div><div class="d">subió el gasto extranjero mientras las llegadas solo un 19%. El valor está en cobrar mejor, no en llenar barato.</div></div>
+      <div class="stat"><div class="n">+10%</div><div class="d">crecen las noches fuera de temporada alta. Se puede llenar más allá de agosto.</div></div>
+    </div>
+    <p class="src">Fuente: Estudio IMPACTUR Cantabria 2024, Exceltur y Gobierno de Cantabria.</p>
+
+    <div class="divide"></div>
+    <div class="mk-agg">
+      <div class="mk-body">
+        <h3>el mercado se está partiendo en dos</h3>
+        <p>En Cantabria hay casi mil viviendas compitiendo en Airbnb, pero la mayoría sigue trabajando como hace diez años: precio fijo todo el año, mensajes a mano y sin datos de mercado detrás. Casi la mitad no usa pricing dinámico y cuatro de cada diez las lleva un particular sin herramientas.</p>
+        <p>Los que sí usan tecnología, precios que se mueven con la demanda, automatización y análisis de la competencia, sacan bastante más partido a la misma vivienda. La clave no es cobrar más porque sí, que también hay quien se pasa y espanta reservas, sino cobrar lo justo en cada momento.</p>
+        <p>Esa es la diferencia entre llenar barato y rentabilizar bien. Y la brecha crece cada temporada.</p>
       </div>
-      <div class="result">
-        <div class="rrow">
-          <div class="k">Gestionándolo tú</div>
-          <div class="v" id="rNow">8.400 €</div>
-          <div class="bar a"><i id="barA" style="width:40%"></i></div>
-        </div>
-        <div class="rrow up">
-          <div class="k">Con Atmossphera Studio</div>
-          <div class="v" id="rNew">10.483 €</div>
-          <div class="bar b"><i id="barB" style="width:60%"></i></div>
-          <div class="updelta"><span class="pct" id="deltaPct">+25%</span><span style="color:var(--muted);font-size:.9rem" id="deltaEur">2.083 € más al año</span></div>
-        </div>
+      <div class="aggnums">
+        <div class="a"><div class="n">991</div><div class="d">alojamientos que seguimos en Cantabria</div></div>
+        <div class="a"><div class="n">48%</div><div class="d">no usa pricing dinámico</div></div>
+        <div class="a"><div class="n">39%</div><div class="d">los lleva un particular sin herramientas</div></div>
+        <div class="a"><div class="n">425</div><div class="d">tienen menos de 5 reseñas o ninguna</div></div>
+        <div class="a gr"><div class="n">45%</div><div class="d">de ocupación media, y uno de cada cuatro por debajo del 20%</div></div>
+        <div class="a gr"><div class="n">2 de 3</div><div class="d">tienen margen claro de mejora en precio u ocupación</div></div>
       </div>
     </div>
-    <p class="finenote">Estimación orientativa basada en subir el precio a lo que vale la vivienda y llenar más noches con el huésped correcto. Sin permanencia y con el primer mes gratis para que lo compruebes tú.</p>
-  </div>
-</section>
 
-<section class="band">
-  <div class="wrap band-in">
-    <div class="big">+15 a 30%</div>
-    <div>
-      <h3>Es el aumento medio de rentabilidad que ya conseguimos a clientes como tú</h3>
-      <p>Sin obras ni inversiones raras. Solo control sobre quién entra, precios que se mueven con el mercado y una experiencia mejor cuidada. Y si quieres verlo antes de pagar nada, tienes el primer mes gratis.</p>
-      <a class="btn" href="#contacto">Probar un mes gratis</a>
-    </div>
-  </div>
-</section>
-
-<section class="sec services" style="background:var(--fog)">
-  <div class="wrap">
-    <div class="split">
-      <div class="tile connect">
-        <span class="tag">Conecta lo que ya tienes</span>
-        <h3>sigue con tus herramientas, el trabajo lo hacemos nosotros</h3>
-        <p>¿Ya usas un PMS, un channel manager o un dinamizador de precios? Perfecto. Lo conectas y nosotros nos encargamos de operarlo cada día. No cambias de sistema ni aprendes nada nuevo.</p>
+    <!-- MAP -->
+    <div class="mapblock">
+      <div class="map-head">
+        <h3>dónde está el mercado, y dónde está la oportunidad</h3>
+        <div class="metricsel" role="group" aria-label="Elige el dato a mostrar">
+          <button data-m="occ" aria-pressed="true">Ocupación</button>
+          <button data-m="noopt" aria-pressed="false">Sin tecnología</button>
+          <button data-m="comp" aria-pressed="false">Competencia</button>
+        </div>
       </div>
-      <div class="tile offer">
-        <span class="tag">Sin compromiso</span>
-        <h3>pruébalo sin compromiso</h3>
-        <p>Empieza gratis. Un mes sin comisión para que veas por ti mismo que subimos tus ingresos. Sin permanencia: si no te convence, lo dejas cuando quieras.</p>
+      <div class="map-stage">
+        <div class="map-svg-wrap">
+          <svg id="cantMap" viewBox="0 0 1000 609" role="img" aria-label="Mapa de Cantabria con datos de mercado por zona"></svg>
+          <div class="tooltip" id="tt"></div>
+        </div>
+        <div class="map-side">
+          <div class="legend-ttl" id="legTtl">Ocupación media</div>
+          <div class="legbar" id="legBar"></div>
+          <div class="legends"><span id="legLo">Baja</span><span id="legHi">Alta</span></div>
+          <p class="legnote" id="legNote">El tamaño de cada círculo indica <b>cuántos alojamientos</b> hay en esa zona. El color, la <b>ocupación media</b>: verde donde el mercado ya rinde, rojo donde queda margen.</p>
+          <p class="legnote" style="margin-top:12px;color:var(--moss)">Pasa el ratón o toca una zona para ver sus datos.</p>
+        </div>
       </div>
+      <p class="map-foot">Datos propios de seguimiento del mercado, agregados por zona. Sin nombres ni anuncios concretos. Otras zonas de Cantabria suman 324 alojamientos más.</p>
     </div>
-  </div>
-</section>
 
-<section class="sec services">
-  <div class="wrap">
-    <div class="eyebrow">Un solo servicio, bien hecho</div>
-    <h2 class="sec-ttl">todo lo que gestionamos por ti</h2>
-    <ul class="svc-list">
-      <li>Optimización del anuncio en Airbnb y Booking</li>
-      <li>Pricing dinámico ajustado al mercado</li>
-      <li>Gestión completa de reservas y mensajería</li>
-      <li>Filtrado de huéspedes y llamada previa cuando hace falta</li>
-      <li>Fotografía y contenido en @atmossphera.studio</li>
-      <li>Solicitud de reseñas y seguimiento</li>
-      <li>Limpieza coordinada</li>
-      <li>Mantenimiento del jardín</li>
-      <li>Detalle de bienvenida</li>
-      <li>Revisión de la vivienda en cada rotación</li>
-    </ul>
-  </div>
-</section>
-
-<section class="sec process">
-  <div class="wrap">
-    <div class="eyebrow">Cómo empezamos</div>
-    <h2 class="sec-ttl">de la primera llamada al primer informe</h2>
-    <p class="lead">Somos ágiles. En menos de una semana tu vivienda ya tiene pricing dinámico activo y el anuncio optimizado.</p>
-    <div class="steps">
-      <div class="step"><div class="st-n">01</div><div class="st-when">Día 1 - Análisis</div><div><div class="st-h">revisamos tu anuncio y tu zona</div><p>Miramos tu anuncio y los datos reales de mercado de tu zona. En 24 horas tienes un diagnóstico claro.</p></div></div>
-      <div class="step"><div class="st-n">02</div><div class="st-when">Días 2 a 4 - Configuración</div><div><div class="st-h">optimizamos y activamos el pricing</div><p>Reescribimos el anuncio, mejoramos las fotos y activamos el pricing dinámico.</p></div></div>
-      <div class="step"><div class="st-n">03</div><div class="st-when">Desde el día 5 - Gestión diaria</div><div><div class="st-h">reservas, mensajería y huéspedes filtrados</div><p>Nos ocupamos del día a día. Tú no gestionas nada.</p></div></div>
-      <div class="step"><div class="st-n">04</div><div class="st-when">Cada mes - Informe</div><div><div class="st-h">control total, sin sorpresas</div><p>Recibes un informe con ingresos y ocupación. Las decisiones importantes siguen siendo tuyas.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= MERCADO CANTABRIA ================= -->
-
-
-<section class="band" style="background:#16291f">
-  <div class="wrap band-in" style="grid-template-columns:1fr;text-align:center;place-items:center">
-    <div>
-      <h3 style="font-size:2rem">¿de qué lado quieres estar?</h3>
-      <p style="margin:0 auto 0;max-width:56ch">Ponemos la tecnología y el trabajo para que tu vivienda juegue en el grupo que gana, sin que cambies nada de lo que ya usas.</p>
-      <a class="btn" href="#contacto" style="margin-top:1.4rem">Quiero mi diagnóstico gratuito</a>
-    </div>
-  </div>
-</section>
-
-
-<section class="sec insta" id="novedades">
-  <div class="wrap">
-    <div class="eyebrow">En Instagram</div>
-    <h2 class="sec-ttl">lo último de @atmossphera.studio</h2>
-    <p class="lead">Cantabria, las viviendas que gestionamos y el día a día del proyecto. Las publicaciones se actualizan solas desde Instagram.</p>
-    <div id="igGrid" class="ig-grid"></div>
-    <a class="btn btn-ghost ig-cta" href="https://www.instagram.com/atmossphera.studio/" target="_blank" rel="noopener">Síguenos en Instagram</a>
-  </div>
-</section>
-
-<section class="sec contact" id="contacto">
-  <div class="wrap">
-    <h2>¿quieres aumentar tu rentabilidad?</h2>
-    <p class="lead">Escríbenos y te hacemos un diagnóstico gratuito de tu vivienda: qué precio deberías tener y qué margen de mejora hay.</p>
-    <div class="actions">
-      <a class="btn btn-primary" href="https://www.instagram.com/atmossphera.studio/" target="_blank" rel="noopener">Instagram @atmossphera.studio</a>
-      <a class="btn btn-ghost" href="mailto:atmossphera360@gmail.com">atmossphera360@gmail.com</a>
-      <a class="btn btn-ghost" href="tel:+34674671643">674 671 643</a>
-    </div>
   </div>
 </section>
 
@@ -413,48 +331,83 @@ footer{background:var(--pine);color:#9DB39A;padding:38px 0;font-size:.85rem}.foo
 </footer>
 
 <script>
-/* ---------- Calculadora ---------- */
 (function(){
-  const price=document.getElementById('price'), nights=document.getElementById('nights');
-  const pOut=document.getElementById('pOut'), nOut=document.getElementById('nOut');
-  const rNow=document.getElementById('rNow'), rNew=document.getElementById('rNew');
-  const barA=document.getElementById('barA'), barB=document.getElementById('barB');
-  const dPct=document.getElementById('deltaPct'), dEur=document.getElementById('deltaEur');
-  const eur=n=>{n=Math.round(n);let s=String(Math.abs(n)),o='';for(let i=0;i<s.length;i++){if(i>0&&(s.length-i)%3===0)o+='.';o+=s[i];}return(n<0?'-':'')+o+' €';};
-  function calc(){
-    const p=+price.value, n=+nights.value;
-    pOut.textContent=p+' €'; nOut.textContent=n;
-    const now=p*n;
-    const newP=p*1.12;                      // precio ajustado al mercado
-    const newN=Math.min(300, Math.round(n*1.12)); // más noches con el huésped correcto
-    const nw=newP*newN;
-    rNow.textContent=eur(now); rNew.textContent=eur(nw);
-    const pct=Math.round((nw/now-1)*100);
-    dPct.textContent='+'+pct+'%'; dEur.textContent=eur(nw-now)+' más al año';
-    barA.style.width=Math.max(8,(now/nw)*100)+'%'; barB.style.width='100%';
-  }
-  price.addEventListener('input',calc); nights.addEventListener('input',calc); calc();
-})();
-
-
-</script>
-
-<script>
-(function(){
-  var grid=document.getElementById('igGrid'); if(!grid) return;
-  var N=6;
-  var esc=function(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');};
-  fetch('assets/instagram/posts.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
-    var posts=(d.posts||[]).slice(0,N);
-    if(!posts.length){grid.outerHTML='<p class="ig-empty">Aún no hay publicaciones.</p>';return;}
-    grid.innerHTML=posts.map(function(p){
-      var play=p.isVideo?'<span class="play">\u25B6</span>':'';
-      var cap=esc((p.caption||'Publicación en Instagram').slice(0,60));
-      return '<a href="'+p.permalink+'" target="_blank" rel="noopener" aria-label="'+cap+'"><img loading="lazy" src="'+p.image+'" alt="">'+play+'</a>';
-    }).join('');
-  }).catch(function(){
-    grid.outerHTML='<p class="ig-empty">El feed se carga al publicar la web en GitHub Pages (se actualiza solo desde Instagram cada pocas horas).</p>';
+  const OUT="M741.9,0.0 L767.7,4.7 L796.3,33.3 L835.7,41.6 L836.3,58.5 L815.6,55.6 L799.9,71.6 L816.4,66.3 L815.8,88.4 L824.4,62.5 L839.0,80.9 L898.7,76.1 L900.4,89.3 L959.0,96.5 L956.3,101.5 L964.5,111.8 L999.0,129.2 L1000.0,166.6 L965.9,185.4 L956.6,165.0 L924.7,180.2 L893.6,170.6 L889.1,189.9 L825.0,223.8 L843.4,306.4 L734.1,293.4 L728.9,277.3 L706.2,268.1 L674.6,320.3 L645.1,332.9 L639.4,348.7 L590.9,346.0 L599.8,362.5 L589.2,381.6 L565.1,380.3 L554.2,401.0 L528.5,413.9 L506.2,469.6 L516.3,485.0 L542.3,482.8 L540.0,494.9 L579.1,450.4 L600.5,471.1 L579.2,495.2 L555.1,482.9 L563.9,504.8 L545.4,503.3 L561.2,510.5 L551.0,526.8 L571.6,533.9 L581.0,502.8 L598.1,512.9 L609.1,566.7 L582.0,586.1 L563.0,571.6 L553.3,600.7 L514.2,609.0 L501.1,600.2 L498.8,549.9 L468.7,605.0 L453.0,606.3 L439.0,580.8 L412.7,583.8 L391.8,561.3 L407.9,544.9 L418.2,551.8 L426.7,529.6 L412.7,517.9 L374.8,537.2 L359.5,449.0 L295.9,436.1 L266.7,385.9 L237.6,366.8 L228.6,365.2 L221.0,382.8 L194.4,375.8 L172.3,398.3 L144.3,385.2 L125.5,400.6 L75.7,400.1 L63.6,391.3 L63.2,368.5 L50.2,369.2 L50.0,353.9 L20.3,339.3 L0.0,312.5 L9.9,287.1 L2.0,270.4 L69.0,260.9 L77.5,223.4 L70.9,206.6 L129.2,198.2 L144.1,171.7 L174.2,181.8 L178.6,197.4 L192.9,189.8 L193.6,143.3 L183.9,127.1 L200.0,96.7 L271.8,99.7 L300.5,86.8 L307.9,98.6 L336.0,101.2 L397.8,90.7 L453.1,60.7 L513.4,58.6 L526.1,46.5 L532.9,34.2 L562.7,34.4 L627.2,17.6 L640.1,37.4 L610.1,51.7 L603.6,49.9 L609.6,61.7 L600.5,63.2 L616.3,70.1 L605.2,80.6 L609.1,90.1 L630.8,74.6 L623.7,65.6 L632.6,51.7 L639.0,54.2 L650.2,50.0 L631.9,44.6 L657.0,43.8 L741.9,0.0 Z";
+  const Z=[
+    {name:"San Vicente de la Barquera",x:267,y:101,n:220,occ:46,noopt:35,part:38},
+    {name:"Comillas",x:330,y:103,n:128,occ:37,noopt:57,part:35},
+    {name:"Cóbreces",x:370,y:105,n:85,occ:45,noopt:35,part:27},
+    {name:"Ruiloba",x:352,y:110,n:56,occ:43,noopt:50,part:54},
+    {name:"Udías",x:330,y:144,n:51,occ:45,noopt:35,part:53},
+    {name:"Oreña",x:410,y:105,n:39,occ:51,noopt:54,part:44},
+    {name:"Torrelavega",x:473,y:133,n:42,occ:44,noopt:64,part:40},
+    {name:"Santillana del Mar",x:437,y:97,n:25,occ:57,noopt:44,part:48},
+    {name:"Cabezón de la Sal",x:361,y:165,n:21,occ:68,noopt:81,part:43}
+  ];
+  const METR={
+    occ:{ttl:"Ocupación media",lo:"Baja",hi:"Alta",invert:true,dom:[30,60],
+      note:"El tamaño de cada círculo indica <b>cuántos alojamientos</b> hay en esa zona. El color, la <b>ocupación media</b>: verde donde el mercado ya rinde, rojo donde queda margen."},
+    noopt:{ttl:"Sin pricing dinámico",lo:"Pocos",hi:"Muchos",invert:false,dom:[30,80],
+      note:"El color muestra el <b>% que aún no usa tecnología de precios</b>. Rojo es donde la mayoría deja dinero sobre la mesa, tu mayor oportunidad."},
+    comp:{ttl:"Competencia",lo:"Menos",hi:"Más",invert:false,dom:[20,220],
+      note:"El color y el tamaño muestran <b>cuántos alojamientos</b> compiten en cada zona. Rojo es donde más apretado está el mercado."}
+  };
+  // green -> amber -> clay
+  const C=[[46,125,91],[224,166,75],[194,91,58]];
+  function lerp(a,b,t){return a.map((v,i)=>Math.round(v+(b[i]-v)*t))}
+  function heat(t){t=Math.max(0,Math.min(1,t));return t<.5?lerp(C[0],C[1],t*2):lerp(C[1],C[2],(t-.5)*2)}
+  function rgb(a){return`rgb(${a[0]},${a[1]},${a[2]})`}
+  const svg=document.getElementById('cantMap');
+  const NS="http://www.w3.org/2000/svg";
+  function el(t,a){const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e}
+  svg.appendChild(el('path',{d:OUT,class:'cant-out'}));
+  const tt=document.getElementById('tt'), wrap=svg.parentElement;
+  let cur="occ";
+  const nodes=Z.map(z=>{
+    const g=el('g',{class:'zone',tabindex:'0','aria-label':z.name});
+    const r=6+Math.sqrt(z.n)*1.35;
+    const c=el('circle',{cx:z.x,cy:z.y,r:r,'fill-opacity':.9});
+    g.appendChild(c);
+    function show(){
+      const m=METR[cur];
+      tt.innerHTML=`<b>${z.name}</b>
+        <div class="tl"><span>Alojamientos</span><em>${z.n}</em></div>
+        <div class="tl"><span>Ocupación media</span><em>${z.occ}%</em></div>
+        <div class="tl"><span>Sin pricing dinámico</span><em>${z.noopt}%</em></div>
+        <div class="tl"><span>Gestión particular</span><em>${z.part}%</em></div>`;
+      const rect=wrap.getBoundingClientRect(), sc=rect.width/1000;
+      let lx=z.x*sc+14, ly=z.y*(rect.height/609)-10;
+      if(lx>rect.width-190)lx=z.x*sc-186;
+      tt.style.left=lx+'px'; tt.style.top=ly+'px'; tt.classList.add('on');
+    }
+    g.addEventListener('mouseenter',show); g.addEventListener('focus',show);
+    g.addEventListener('mouseleave',()=>tt.classList.remove('on'));
+    g.addEventListener('blur',()=>tt.classList.remove('on'));
+    svg.appendChild(g);
+    return {z,c};
   });
+  function paint(){
+    const m=METR[cur], [d0,d1]=m.dom;
+    nodes.forEach(({z,c})=>{
+      let t=(z[cur==='comp'?'n':cur]-d0)/(d1-d0);
+      if(m.invert)t=1-t;
+      c.setAttribute('fill',rgb(heat(t)));
+    });
+    document.getElementById('legBar').style.background=m.invert
+      ?'linear-gradient(90deg,var(--clay),var(--amber),var(--good))'
+      :'linear-gradient(90deg,var(--good),var(--amber),var(--clay))';
+    document.getElementById('legTtl').textContent=m.ttl;
+    document.getElementById('legLo').textContent=m.lo;
+    document.getElementById('legHi').textContent=m.hi;
+    document.getElementById('legNote').innerHTML=m.note;
+  }
+  document.querySelectorAll('.metricsel button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      document.querySelectorAll('.metricsel button').forEach(x=>x.setAttribute('aria-pressed','false'));
+      b.setAttribute('aria-pressed','true'); cur=b.dataset.m; paint(); tt.classList.remove('on');
+    });
+  });
+  paint();
 })();
 </script>
 </body>
