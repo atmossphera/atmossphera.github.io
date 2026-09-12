@@ -87,6 +87,10 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(231,236,227,.82);bac
 @keyframes slide{to{transform:translateX(-50%)}}
 
 /* concept */
+.crumbs{display:flex;align-items:center;gap:.6rem;font-size:.78rem;letter-spacing:.06em;color:var(--muted);margin-bottom:1.6rem;flex-wrap:wrap}
+.crumbs a{color:var(--moss);text-decoration:none;font-weight:600;transition:.2s}
+.crumbs a:hover{color:var(--pine);text-decoration:underline;text-underline-offset:3px}
+.crumbs span[aria-hidden]{color:var(--line)}
 .concept{background:var(--paper)}
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px}
 .pillar{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:34px 30px}
@@ -295,14 +299,12 @@ footer{background:var(--pine);color:#9DB39A;padding:38px 0;font-size:.85rem}.foo
 </header>
 
 <a id="top"></a>
-<section class="sec" style="padding-bottom:0">
-  <div class="wrap">
-    <a href="/" style="font-size:.85rem;color:var(--moss);text-decoration:none">&larr; Volver a Atmossphera Studio</a>
-  </div>
-</section>
 
 <section class="sec market" id="mercado">
   <div class="wrap">
+    <nav class="crumbs" aria-label="Migas de pan">
+      <a href="/">Atmossphera Studio</a><span aria-hidden="true">/</span><span>Mercado en Cantabria</span>
+    </nav>
     <div class="eyebrow">Tendencia mercado Cantabria</div>
     <h1 class="sec-ttl">el turismo en Cantabria está en máximos, y el mercado lo sabe</h1>
     <p class="lead">No lo decimos nosotros. Estos son datos públicos del último estudio de impacto del turismo en la comunidad. Cuentan por qué este es un buen momento para poner tu vivienda a trabajar de verdad.</p>
