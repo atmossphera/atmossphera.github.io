@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atmossphera Studio | Gestión de alojamientos turísticos en Cantabria</title>
+<title>Atmossphera Studio | Gestión de alojamientos vacacionales en Cantabria</title>
 <link rel="icon" type="image/png" href="/favicon.png">
-<meta name="description" content="Gestión de alojamientos turísticos en Cantabria. Somos Víctor y Rubén: subimos la rentabilidad de tu vivienda en Oyambre, Comillas, San Vicente, Udías y toda Cantabria con datos y pricing en tiempo real, sin que cambies nada de lo que ya usas.">
-<meta name="keywords" content="gestión alojamientos turísticos Cantabria, gestión pisos turísticos Cantabria, vivienda uso turístico Cantabria, alojamiento turístico Oyambre, alquiler turístico Comillas, pricing dinámico Cantabria">
+<meta name="description" content="Gestión de alojamientos vacacionales en Cantabria. Somos Víctor y Rubén: subimos la rentabilidad de tu vivienda en Oyambre, Comillas, San Vicente, Udías y toda Cantabria con datos y pricing en tiempo real, sin que cambies nada de lo que ya usas.">
+<meta name="keywords" content="gestión alojamientos vacacionales Cantabria, gestión pisos vacacionales Cantabria, vivienda uso turístico Cantabria, alojamiento vacacional Oyambre, alquiler vacacional Comillas, pricing dinámico Cantabria">
 <meta name="author" content="Atmossphera Studio">
 <meta name="geo.region" content="ES-CB">
 <meta name="geo.placename" content="Udías, Cantabria">
@@ -15,13 +15,13 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_ES">
 <meta property="og:site_name" content="Atmossphera Studio">
-<meta property="og:title" content="Atmossphera Studio | Gestión de alojamientos turísticos en Cantabria">
-<meta property="og:description" content="Gestión de alojamientos turísticos en Cantabria. Subimos la rentabilidad de tu vivienda con datos y pricing en tiempo real, sin que cambies nada de lo que ya usas.">
+<meta property="og:title" content="Atmossphera Studio | Gestión de alojamientos vacacionales en Cantabria">
+<meta property="og:description" content="Gestión de alojamientos vacacionales en Cantabria. Subimos la rentabilidad de tu vivienda con datos y pricing en tiempo real, sin que cambies nada de lo que ya usas.">
 <meta property="og:url" content="https://atmosspherastudio.com/">
 <meta property="og:image" content="https://atmosspherastudio.com/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Atmossphera Studio | Gestión de alojamientos turísticos en Cantabria">
-<meta name="twitter:description" content="Gestión de alojamientos turísticos en Cantabria. Subimos la rentabilidad de tu vivienda con datos y pricing en tiempo real.">
+<meta name="twitter:title" content="Atmossphera Studio | Gestión de alojamientos vacacionales en Cantabria">
+<meta name="twitter:description" content="Gestión de alojamientos vacacionales en Cantabria. Subimos la rentabilidad de tu vivienda con datos y pricing en tiempo real.">
 <meta name="twitter:image" content="https://atmosspherastudio.com/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -129,6 +129,10 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(231,236,227,.86);bac
 .band h3{color:#fff;font-size:1.5rem;text-transform:none;margin-bottom:.6rem}
 .band p{color:#C6D3C2;margin:0;max-width:60ch}
 .band .btn{margin-top:1.3rem;background:var(--paper);color:var(--pine)}
+.band-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:1.3rem}
+.band-actions .btn{margin-top:0}
+.band-actions .btn-tarifas{background:transparent;border:1.5px solid var(--amber);color:var(--amber)}
+.band-actions .btn-tarifas:hover{background:var(--amber);color:#20302A;transform:translateY(-2px)}
 
 /* mercado teaser */
 .market{background:var(--fog)}
@@ -234,7 +238,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .faq-a p{color:var(--muted);margin:0 0 24px;max-width:66ch;font-size:1rem}
 
 /* contact */
-.contact{background:var(--fog);text-align:center}
+.contact{background:var(--fog);text-align:center;padding-top:36px}
 .contact h2{font-size:clamp(2.2rem,5vw,3.4rem)}
 .contact .lead{margin:1.2rem auto 2.4rem}
 .contact .actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
@@ -242,6 +246,9 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.footer-in{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}.footer-logo img{height:32px;width:auto;display:block;opacity:.92}@media(max-width:640px){.footer-in{flex-direction:column;text-align:center;gap:.9rem}}
 
 .zones-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.zonas-note{margin-top:30px;font-size:.95rem;color:var(--muted)}
+.zonas-note a{color:var(--moss);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.zonas-note a:hover{color:var(--pine)}
 .zcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px 24px;text-decoration:none;transition:.35s cubic-bezier(.16,.84,.44,1)}
 .zcard:hover{transform:translateY(-5px);border-color:var(--sage);box-shadow:0 14px 30px rgba(30,58,44,.09)}
 .zcard .zn{display:block;font-family:var(--serif);font-size:1.25rem;color:var(--pine);line-height:1.15}
@@ -249,7 +256,7 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
 .zcard .zl{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--moss);font-weight:600;margin-top:1rem;display:block}
 @media(max-width:900px){.zones-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.zones-grid{grid-template-columns:1fr}}
-.insta{background:var(--fog)}
+.insta{background:var(--fog);padding-bottom:36px}
 .ig-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:1.5rem}
 .ig-grid a{position:relative;display:block;aspect-ratio:1/1;border-radius:12px;overflow:hidden;background:var(--paper);border:1px solid var(--line)}
 .ig-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease}
@@ -271,6 +278,8 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
   .step>div:last-child{grid-column:2;grid-row:2;min-width:0}
   .svc-list{columns:1}
   .sec{padding:72px 0}
+  .insta{padding-bottom:28px}
+  .contact{padding-top:28px}
   .rev-grid{grid-template-columns:1fr 1fr}
   .mk-grid{grid-template-columns:1fr 1fr}
   .ig-grid{grid-template-columns:repeat(4,1fr)}
@@ -306,7 +315,7 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
       "@id": "https://atmosspherastudio.com/#business",
       "name": "Atmossphera Studio",
       "alternateName": "Atmossphera Studio Cantabria",
-      "description": "Agencia de gestión de alojamientos turísticos en Cantabria. Ayudamos a propietarios de viviendas de uso turístico en Oyambre, Comillas, San Vicente de la Barquera, Santillana del Mar, Udías y toda Cantabria a aumentar su rentabilidad con pricing dinámico, optimización de anuncios y gestión integral del huésped.",
+      "description": "Agencia de gestión de alojamientos vacacionales en Cantabria. Ayudamos a propietarios de viviendas de uso turístico en Oyambre, Comillas, San Vicente de la Barquera, Santillana del Mar, Udías y toda Cantabria a aumentar su rentabilidad con pricing dinámico, optimización de anuncios y gestión integral del huésped.",
       "url": "https://atmosspherastudio.com/",
       "image": "https://atmosspherastudio.com/og-image.jpg",
       "logo": "https://atmosspherastudio.com/favicon.png",
@@ -336,11 +345,11 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
         { "@type": "Person", "name": "Víctor García", "jobTitle": "Estrategia, datos y gestión digital" },
         { "@type": "Person", "name": "Rubén Lamo", "jobTitle": "Operativa, experiencia del huésped y mejora continua" }
       ],
-      "knowsAbout": ["Gestión de viviendas de uso turístico", "Pricing dinámico", "Alojamientos turísticos en Cantabria", "Optimización de anuncios en Airbnb y Booking"],
+      "knowsAbout": ["Gestión de viviendas de uso turístico", "Pricing dinámico", "Alojamientos vacacionales en Cantabria", "Optimización de anuncios en Airbnb y Booking"],
       "sameAs": ["https://www.instagram.com/atmossphera.studio/"],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
-        "name": "Servicios de gestión de alojamientos turísticos en Cantabria",
+        "name": "Servicios de gestión de alojamientos vacacionales en Cantabria",
         "itemListElement": [
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestión online del alojamiento", "description": "Optimización del anuncio, pricing dinámico, gestión de reservas y mensajería con huéspedes." } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gestión integral del alojamiento", "description": "Todo lo anterior más check-in presencial, limpieza coordinada, mantenimiento de jardín y revisión en cada rotación." } }
@@ -363,7 +372,7 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
         },
         {
           "@type": "Question",
-          "name": "¿Cuánto cobráis por gestionar mi vivienda turística?",
+          "name": "¿Cuánto cobráis por gestionar mi vivienda vacacional?",
           "acceptedAnswer": { "@type": "Answer", "text": "Trabajamos a comisión sobre los ingresos reales cobrados al huésped, una vez deducida la tasa de la plataforma. Nunca cobramos por noches vacías. El porcentaje depende de si eliges gestión online o gestión integral con check-in presencial y limpieza coordinada." }
         },
         {
@@ -426,8 +435,8 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
       <b>5/5</b>
       <span class="gm">en 13 reseñas de Google</span>
     </a>
-    <h1 class="rv rv-d1">Gestión de alojamientos turísticos <span class="em">en Cantabria</span></h1>
-    <p class="sub rv rv-d2">Somos Víctor y Rubén. Subimos los ingresos de tu vivienda turística con datos y pricing en tiempo real, sin que cambies nada de lo que ya usas. De Oyambre a Santillana del Mar, cuidamos cada casa como si fuera la nuestra.</p>
+    <h1 class="rv rv-d1">Gestión de alojamientos vacacionales <span class="em">en Cantabria</span></h1>
+    <p class="sub rv rv-d2">Somos Víctor y Rubén. Subimos los ingresos de tu vivienda vacacional con datos y pricing en tiempo real, sin que cambies nada de lo que ya usas. De Oyambre a Santillana del Mar, cuidamos cada casa como si fuera la nuestra.</p>
     <div class="actions rv rv-d3">
       <a class="btn btn-primary" href="#contacto">Pide tu diagnóstico gratuito</a>
       <a class="btn btn-ghost" href="gestion-alquiler-vacacional-cantabria.html">Cómo gestionamos tu alquiler vacacional</a>
@@ -466,7 +475,10 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
     <div class="rv rv-d1">
       <h3>Es el aumento medio de rentabilidad que ya conseguimos a clientes como tú</h3>
       <p>Sin obras ni inversiones raras. Solo control sobre quién entra, precios que se mueven con el mercado y una experiencia mejor cuidada. Y si quieres verlo antes de pagar nada, tienes el primer mes gratis.</p>
-      <a class="btn" href="#contacto">Probar un mes gratis</a>
+      <div class="band-actions rv rv-d2">
+        <a class="btn" href="#contacto">Probar un mes gratis</a>
+        <a class="btn btn-tarifas" href="tarifas.html">Ver tarifas</a>
+      </div>
     </div>
   </div>
 </section>
@@ -670,7 +682,7 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
         <span class="zd">Playa, puerto y base para los Picos de Europa: tres huéspedes distintos.</span>
         <span class="zl">Ver más</span></a>
       <a class="zcard rv" href="gestion-alquiler-vacacional-suances.html">
-        <span class="zn">Suances y Santillana</span>
+        <span class="zn">Suances</span>
         <span class="zd">Mucha oferta parecida: cómo salir de competir solo por precio.</span>
         <span class="zl">Ver más</span></a>
       <a class="zcard rv" href="gestion-alquiler-vacacional-santillana-del-mar.html">
@@ -689,19 +701,8 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
         <span class="zn">Todos los municipios</span>
         <span class="zd">Udías, Torrelavega, Cóbreces, Ruiloba, Cabuérniga, Liérganes, Liencres y más.</span>
         <span class="zl">Ver el listado</span></a>
-      <a class="zcard rv" href="tarifas.html">
-        <span class="zn">Tarifas</span>
-        <span class="zd">10% en gestión online y 20% en integral, sobre los beneficios generados. Sin pagos por adelantado.</span>
-        <span class="zl">Ver tarifas</span></a>
-      <a class="zcard rv rv-d1" href="licencia-turistica-cantabria.html">
-        <span class="zn">Licencia turística</span>
-        <span class="zd">Qué pide el Decreto 50/2025 para registrar una vivienda de uso turístico en Cantabria.</span>
-        <span class="zl">Ver la guía</span></a>
-      <a class="zcard rv rv-d2" href="mercado.html">
-        <span class="zn">El mercado cántabro</span>
-        <span class="zd">Ocupación, precios e ingresos reales de las viviendas comparables.</span>
-        <span class="zl">Ver el análisis</span></a>
     </div>
+    <p class="zonas-note rv rv-d2">¿Vas a registrar tu vivienda? Te contamos qué pide el Decreto 50/2025 en nuestra <a href="licencia-turistica-cantabria.html">guía de licencia turística en Cantabria</a>.</p>
   </div>
 </section>
 
@@ -719,7 +720,7 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
         <div class="faq-a"><p>No. Si ya usas un PMS, un channel manager o un dinamizador de precios, lo conectamos y lo operamos nosotros cada día. No cambias de sistema ni tienes que aprender nada nuevo.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q">¿Cuánto cobráis por gestionar mi vivienda turística?</button>
+        <button class="faq-q">¿Cuánto cobráis por gestionar mi vivienda vacacional?</button>
         <div class="faq-a"><p>Trabajamos a comisión sobre los ingresos reales cobrados al huésped, una vez deducida la tasa de la plataforma. Nunca cobramos por noches vacías. El porcentaje depende de si eliges gestión online o gestión integral con check-in presencial y limpieza coordinada. El primer mes es gratis y no hay permanencia. Tienes el detalle en la <a href="tarifas.html">página de tarifas</a>.</p></div>
       </div>
       <div class="faq-item">
@@ -762,7 +763,6 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
       <a class="btn btn-primary" href="https://wa.me/34674671643" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
       <a class="btn btn-ghost" href="mailto:atmossphera360@gmail.com">atmossphera360@gmail.com</a>
       <a class="btn btn-ghost" href="tel:+34674671643">674 671 643</a>
-      <a class="btn btn-ghost" href="https://www.instagram.com/atmossphera.studio/" target="_blank" rel="noopener">@atmossphera.studio</a>
     </div>
   </div>
 </section>
@@ -770,7 +770,7 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
 <footer>
   <div class="wrap footer-in">
     <span class="footer-logo"><img src="data:image/png;base64,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" alt="Atmossphera Studio"></span>
-    <span>© 2026 Atmossphera Studio. Gestión de alojamientos turísticos en Cantabria.</span>
+    <span>© 2026 Atmossphera Studio. Gestión de alojamientos vacacionales en Cantabria.</span>
   </div>
 </footer>
 
