@@ -34,7 +34,7 @@
 <meta name="twitter:image" content="https://atmosspherastudio.com/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Big+Shoulders+Display:wght@800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --fog:#E7ECE3; --paper:#F3F6EF; --card:#FBFCF9;
@@ -308,14 +308,15 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}.foo
   --pine:#1F3326; --moss:#6E2A2A; --sage:#C2A15A; --sea:#4A5A4F;
   --ink:#1F3326; --muted:#4A5A4F; --line:#CBBF9E;
   --clay:#6E2A2A; --amber:#C2A15A; --good:#6E2A2A;
-  --serif:"IM Fell English",Georgia,"Times New Roman",serif;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --poster:"Big Shoulders Display","Arial Narrow",sans-serif;
   --sans:"DM Sans",system-ui,sans-serif;
   --frame:none;
 }
 body{background:var(--fog)}
-h1,h2,h3{letter-spacing:0}
+h1,h2,h3{letter-spacing:-.01em;font-weight:600}
 .sec-ttl .em,.sec-ttl em,h1 .em{font-style:italic;color:var(--moss)}
-.eyebrow{font-family:var(--serif);font-weight:400;font-size:.86rem;letter-spacing:.32em;color:var(--moss)}
+.eyebrow{font-family:var(--poster);font-weight:800;font-size:.95rem;letter-spacing:.18em;color:var(--moss)}
 
 /* botones rectos, como en los posts */
 .btn,.nav-cta{border-radius:0}
@@ -334,7 +335,7 @@ header.nav{background:rgba(234,224,198,.94);border-bottom:1px solid var(--pine)}
 /* portada: pliego con doble filete y foto en arco */
 .hero{background:var(--fog)}
 
-.hero h1{font-size:clamp(2.2rem,3.9vw,3.3rem)}
+.hero h1{font-size:clamp(2.2rem,3.8vw,3.2rem);line-height:1.06}
 .hero-media{max-width:460px;justify-self:center;width:100%}
 .hero-media img{border-radius:999px 999px 0 0;box-shadow:none;aspect-ratio:4/5;object-fit:cover;border:1.5px solid var(--pine)}
 .gbadge{background:transparent;border:0;padding-left:0}
@@ -343,12 +344,13 @@ header.nav{background:rgba(234,224,198,.94);border-bottom:1px solid var(--pine)}
 
 /* cifras en DM Sans para que se lean bien (IM Fell usa números antiguos) */
 .hero-stats .s .n,.band .big,.mk .n,.rrow .v,.field label b,.step .st-n,.updelta .pct{font-family:var(--sans);font-weight:500}
-.hero-stats .s .n{color:var(--moss)}
+.hero-stats .s .n,.band .big,.mk .n{font-family:var(--poster);font-weight:800}
+.hero-stats .s .n{color:var(--moss);font-size:2.5rem}
 .hero-stats{border-top:1px solid var(--pine);padding-top:26px}
 
 /* franja y bandas oscuras */
 .strip{background:var(--pine);color:#EAE0C6;border-block:1px solid #142219}
-.strip span{font-family:var(--serif);letter-spacing:.28em}
+.strip span{font-family:var(--poster);font-weight:800;letter-spacing:.24em}
 .band{background:var(--pine);color:#EAE0C6}
 .band .big{color:var(--amber)}
 .band p{color:#D6CCB2}
@@ -472,7 +474,7 @@ footer{background:var(--pine);color:#D6CCB2}
 .form-box form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 32px}
 .form-box .full{grid-column:1/-1}
 .campo{display:grid;gap:4px}
-.campo label,.form-box legend{font-family:var(--serif);font-size:.82rem;letter-spacing:.24em;text-transform:uppercase;color:var(--amber)}
+.campo label,.form-box legend{font-family:var(--poster);font-weight:800;font-size:.9rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber)}
 .campo input,.campo textarea{font:inherit;font-size:1.05rem;color:#EAE0C6;background:transparent;border:0;border-bottom:1px solid rgba(234,224,198,.45);border-radius:0;padding:10px 0;min-height:44px}
 .campo textarea{min-height:70px;resize:vertical}
 .campo input::placeholder,.campo textarea::placeholder{color:rgba(234,224,198,.45)}
