@@ -32,7 +32,7 @@
 <meta name="twitter:image" content="https://atmosspherastudio.com/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Instrument+Sans:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Big+Shoulders+Display:wght@800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{--fog:#E7ECE3;--paper:#F3F6EF;--card:#FBFCF9;--pine:#1E3A2C;--moss:#3E6B4E;--sage:#8CA187;
 --ink:#20302A;--muted:#5B6B60;--line:#CFD8CB;--amber:#E0A64B;--maxw:1120px;
@@ -139,6 +139,12 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}
         {
           "@type": "ListItem",
           "position": 2,
+          "name": "Guías",
+          "item": "https://atmosspherastudio.com/guias.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
           "name": "Licencia turística en Cantabria",
           "item": "https://atmosspherastudio.com/licencia-turistica-cantabria.html"
         }
@@ -182,6 +188,22 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}
         },
         {
           "@type": "Question",
+          "name": "¿Cuántos extintores necesito?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uno por cada planta de la vivienda, colocado en un lugar visible y de fácil acceso, y con su contrato o factura de mantenimiento. Es uno de los requisitos que se acreditan en la declaración responsable."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Qué es el registro único estatal?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es un registro de arrendamientos de corta duración que funciona a nivel nacional desde julio de 2025. Es independiente del registro autonómico de Cantabria, así que necesitas los dos números y ambos deben aparecer en tus anuncios."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "¿Me ayudáis con el trámite?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -189,10 +211,181 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}
           }
         }
       ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Licencia turística en Cantabria: cómo registrar tu vivienda",
+      "inLanguage": "es-ES",
+      "dateModified": "2026-10-24",
+      "author": {
+        "@type": "Organization",
+        "name": "Atmossphera Studio",
+        "url": "https://atmosspherastudio.com/"
+      },
+      "mainEntityOfPage": "https://atmosspherastudio.com/licencia-turistica-cantabria.html"
     }
   ]
 }
 </script>
+<style id="exlibris">
+/* ===== Ex Libris: capa de formato sobre la web actual (solo estilo, mismo contenido) ===== */
+:root{
+  --fog:#EAE0C6; --paper:#F2EBD8; --card:#F6F0E0;
+  --pine:#1F3326; --moss:#6E2A2A; --sage:#C2A15A; --sea:#4A5A4F;
+  --ink:#1F3326; --muted:#4A5A4F; --line:#CBBF9E;
+  --clay:#6E2A2A; --amber:#C2A15A; --good:#6E2A2A;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --poster:"Big Shoulders Display","Arial Narrow",sans-serif;
+  --sans:"DM Sans",system-ui,sans-serif;
+  --frame:none;
+}
+body{background:var(--fog)}
+h1,h2,h3{letter-spacing:-.01em;font-weight:600}
+.sec-ttl .em,.sec-ttl em,h1 .em{font-style:italic;color:var(--moss)}
+.eyebrow{font-family:var(--poster);font-weight:800;font-size:.95rem;letter-spacing:.18em;color:var(--moss)}
+
+/* botones rectos, como en los posts */
+.btn,.nav-cta{border-radius:6px}
+.btn-primary{background:var(--moss);color:#F2EBD8}
+.btn-primary:hover{background:#5a2222;box-shadow:none}
+.btn-ghost{border-color:var(--pine)}
+.nav-cta{border-color:var(--moss);color:var(--moss)}
+.nav-cta:hover{background:var(--moss);color:#F2EBD8}
+
+/* cabecera */
+header.nav{background:rgba(234,224,198,.94);border-bottom:1px solid var(--pine)}
+.menu a{font-size:.8rem;letter-spacing:.12em}
+.menu a::after{background:var(--moss)}
+.progress{background:var(--moss)}
+
+/* portada: pliego con doble filete y foto con doble filete */
+.hero{background:var(--fog)}
+
+.hero h1{font-size:clamp(2.2rem,3.8vw,3.2rem);line-height:1.06}
+.hero-media{max-width:460px;justify-self:center;width:100%}
+.hero-media img{border-radius:14px;aspect-ratio:4/5;object-fit:cover;border:0;outline:1.5px solid var(--pine);outline-offset:10px;box-shadow:0 18px 40px rgba(20,40,30,.20),0 4px 10px rgba(20,40,30,.10)}
+.gbadge{background:transparent;border:0;padding-left:0}
+.gbadge:hover{box-shadow:none}
+
+
+/* cifras en DM Sans para que se lean bien (IM Fell usa números antiguos) */
+.hero-stats .s .n,.band .big,.mk .n,.rrow .v,.field label b,.step .st-n,.updelta .pct{font-family:var(--sans);font-weight:500}
+.hero-stats .s .n,.band .big,.mk .n{font-family:var(--poster);font-weight:800}
+.hero-stats .s .n{color:var(--moss);font-size:2.5rem}
+.hero-stats{border-top:1px solid var(--pine);padding-top:26px}
+
+/* franja y bandas oscuras */
+.strip{background:var(--pine);color:#EAE0C6;border-block:1px solid #142219}
+.strip span{font-family:var(--poster);font-weight:800;letter-spacing:.24em}
+.band{background:var(--pine);color:#EAE0C6}
+.band .big{color:var(--amber)}
+.band p{color:#D6CCB2}
+.band .btn{background:#EAE0C6;color:var(--pine)}
+
+/* tarjetas: esquinas rectas y doble filete */
+.pillar,.mk,.calc-panel,.result,.pcard,.zcard,.tile{border-radius:8px;border:1.5px solid var(--pine);box-shadow:none;background:var(--card)}
+.pillar:hover,.mk:hover,.pcard:hover,.zcard:hover{box-shadow:0 12px 28px rgba(31,51,38,.12);border-color:var(--pine)}
+.pillar .num{font-style:italic;font-size:1.3rem}
+.tile.offer{background:var(--paper)}
+.tile .tag,.calc-panel .cap,.pcard .role,.zcard .zl{color:var(--moss)}
+
+/* calculadora */
+.rrow{border-bottom-color:var(--line)}
+.rrow.up{background:#EFE4C6}
+.rrow.up .v{color:var(--moss)}
+.bar.a>i{background:var(--sea)}
+.bar.b>i{background:var(--moss)}
+input[type=range]{background:var(--line)}
+input[type=range]::-webkit-slider-thumb{background:var(--moss);border-color:var(--card)}
+input[type=range]::-moz-range-thumb{background:var(--moss);border-color:var(--card)}
+
+/* reseñas */
+.revs{background:var(--pine);color:#EAE0C6}
+.revs h2{color:#EAE0C6}
+.revs .eyebrow{color:var(--amber)}
+.revs .lead{color:#D6CCB2}
+.rev-hero{background:#182a20;border:1.5px solid var(--amber);border-radius:8px;box-shadow:none}
+.rev-hero .q{color:#EAE0C6;font-style:italic}
+.rev{border-radius:8px;border-color:rgba(194,161,90,.45);background:transparent}
+.rev:hover{border-color:var(--amber);background:rgba(234,224,198,.04)}
+.rev p{color:#E2D9C1}
+.rev .who,.rev-hero .who{color:var(--amber)}
+.revs-cta .btn-primary{background:#EAE0C6;color:var(--pine)}
+
+/* equipo: fotos en arco */
+.pcard .ph{border-radius:8px;height:130px;border:0;outline:1.5px solid var(--pine);outline-offset:5px;padding:0;background:var(--card);overflow:hidden;box-shadow:0 8px 18px rgba(20,40,30,.18)}
+.pcard .ph img{border-radius:8px}
+.pcard .nm{font-size:1.45rem}
+@media(max-width:560px){.pcard .ph{height:92px}}
+
+/* servicios, proceso, faq, zonas */
+.svc-list li{border-bottom-color:var(--line)}
+.svc-list li::before{border-radius:0;transform:rotate(45deg);width:10px;height:10px;border-color:var(--moss);top:24px}
+.svc-list li:hover::before{background:var(--moss)}
+.steps{border-top:2px solid var(--pine)}
+.step{border-bottom-color:var(--pine)}
+.step .st-n{color:var(--amber);font-size:1.6rem}
+.faq-list{border-top:2px solid var(--pine)}
+.faq-item{border-bottom-color:var(--pine)}
+.faq-q::after{color:var(--moss)}
+.zcard .zn{font-size:1.35rem}
+
+/* instagram */
+.ig-grid a{border-radius:6px;overflow:hidden;border-color:var(--pine)}
+
+/* pie */
+footer{background:var(--pine);color:#D6CCB2}
+
+</style>
+<style id="exlibris-guias">
+/* Ex Libris aplicado a páginas de guía */
+.hero{background:var(--fog);border-bottom:1px solid var(--pine)}
+.crumbs a{color:var(--moss)}
+.crumbs span[aria-hidden]{color:var(--sage)}
+.meta{font-size:.85rem;color:var(--muted);margin-top:1rem}
+.sec.alt{background:var(--paper);border-block:1px solid var(--pine)}
+.card{border-radius:8px;border:1.5px solid var(--pine);background:var(--card);box-shadow:none}
+.card:hover{border-color:var(--pine);box-shadow:0 12px 28px rgba(31,51,38,.12)}
+.card h3{font-weight:600}
+.steps{border-top:2px solid var(--pine)}
+.stepx{border-bottom-color:var(--pine)}
+.stepx .n{font-family:var(--poster);font-weight:800;color:var(--amber);font-size:1.8rem}
+.warn{background:var(--paper);border-left:3px solid var(--moss);border-radius:0 8px 8px 0}
+.warn p{color:var(--ink)}
+.faq-list{border-top:2px solid var(--pine)}
+.faq-item{border-bottom-color:var(--pine)}
+.faq-q{font-weight:600}
+.faq-q::after{color:var(--moss)}
+.doc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.doc-grid .card ul{margin:.4rem 0 0;padding:0;list-style:none}
+.doc-grid .card li{position:relative;padding:8px 0 8px 22px;border-bottom:1px solid var(--line);color:var(--muted);font-size:.95rem}
+.doc-grid .card li:last-child{border-bottom:0}
+.doc-grid .card li::before{content:"";position:absolute;left:2px;top:16px;width:8px;height:8px;border:1.5px solid var(--moss);transform:rotate(45deg)}
+.fines{width:100%;max-width:620px;border-collapse:collapse;margin-top:36px;font-size:1rem}
+.fines th,.fines td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--pine)}
+.fines th{font-family:var(--poster);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;color:var(--moss)}
+.fines td:last-child{font-weight:600;color:var(--moss);white-space:nowrap}
+.errs{margin-top:36px;padding:0;list-style:none;max-width:760px}
+.errs li{padding:18px 0 18px 34px;border-bottom:1px solid var(--line);position:relative;color:var(--muted)}
+.errs li b{color:var(--ink)}
+.errs li::before{content:"✕";position:absolute;left:4px;top:18px;color:var(--moss);font-weight:600}
+.guides{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.guide{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:8px;border:1.5px solid var(--pine);background:var(--card);padding:30px 26px;transition:.35s cubic-bezier(.16,.84,.44,1)}
+a.guide:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(31,51,38,.12)}
+.guide .gn{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.3rem;color:var(--amber)}
+.guide .gc{font-family:var(--poster);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;color:var(--moss);margin-top:14px}
+.guide h3{font-size:1.35rem;margin:.4rem 0 .6rem}
+.guide p{color:var(--muted);font-size:.96rem;flex:1;margin:0}
+.guide .gl{margin-top:20px;font-weight:600;font-size:.9rem;color:var(--moss)}
+.guide.feat{grid-column:1/-1;background:var(--pine);color:#EAE0C6;border-color:var(--pine);padding:40px}
+.guide.feat h3{color:#EAE0C6;font-size:clamp(1.6rem,3vw,2.1rem);max-width:26ch}
+.guide.feat p{color:#D6CCB2;max-width:62ch}
+.guide.feat .gc,.guide.feat .gl{color:var(--amber)}
+.guide.soon{opacity:.62}
+.guide.soon .gl{color:var(--muted);font-weight:500}
+@media(max-width:900px){.doc-grid,.guides{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.doc-grid,.guides{grid-template-columns:1fr}.guide.feat{padding:30px 24px}}
+</style>
 </head>
 <body>
 
@@ -203,9 +396,9 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}
       <ul class="menu">
         <li><a href="/#concepto">Concepto</a></li>
         <li><a href="/tarifas.html">Tarifas</a></li>
-        <li><a href="/zonas.html">Zonas</a></li>
-        <li><a href="/mercado.html">Mercado</a></li>
         <li><a href="/#nosotros">Nosotros</a></li>
+        <li><a href="/taller.html">Taller</a></li>
+        <li><a href="/guias.html">Guías</a></li>
       </ul>
     </nav>
     <a class="nav-cta" href="/#contacto">Diagnóstico gratis</a>
@@ -216,10 +409,11 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}
 <section class="hero">
   <div class="wrap">
     <nav class="crumbs" aria-label="Migas de pan">
-      <a href="/">Atmossphera Studio</a><span aria-hidden="true">/</span><span>Licencia turística en Cantabria</span>
+      <a href="/">Atmossphera Studio</a><span aria-hidden="true">/</span><a href="/guias.html">Guías</a><span aria-hidden="true">/</span><span>Licencia turística en Cantabria</span>
     </nav>
     <h1 class="rv">Licencia turística en Cantabria: <span class="em">cómo registrar tu vivienda</span></h1>
     <p class="lead rv rv-d1">Desde el Decreto 50/2025 el trámite cambió y se endureció. Estamos registrando nuestra propia vivienda con la normativa nueva, así que esto no es teoría: es lo que nos está pasando a nosotros.</p>
+    <p class="meta rv rv-d1">Guía actualizada en octubre de 2026</p>
     <div class="actions rv rv-d2">
       <a class="btn btn-primary" href="/#contacto">Cuéntanos tu caso</a>
       <a class="btn btn-ghost" href="/tarifas.html">Ver nuestras tarifas</a>
@@ -240,23 +434,105 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}
   </div>
 </section>
 
-<section class="sec" style="background:var(--paper)">
+<section class="sec alt">
   <div class="wrap">
     <div class="eyebrow rv">Paso a paso</div>
     <h2 class="rv rv-d1">El camino desde cero hasta poder alquilar</h2>
     <p class="lead rv rv-d2">Este es el orden real, y el orden importa: el informe urbanístico va antes que la declaración responsable, no después.</p>
     <div class="steps rv rv-d2">
       <div class="stepx"><div class="n">01</div><div><h3>Comprueba el planeamiento de tu municipio</h3><p>Cada ayuntamiento aplica su propio plan general y sus ordenanzas. Hay municipios cántabros que limitan en qué plantas puede haber vivienda de uso turístico o imponen condiciones adicionales. Es lo primero que hay que mirar, porque puede tumbar el proyecto entero.</p></div></div>
-      <div class="stepx"><div class="n">02</div><div><h3>Solicita el informe de compatibilidad urbanística</h3><p>Se pide al ayuntamiento donde está la vivienda. Es el paso que más se alarga, porque muchos ayuntamientos siguen ajustando el procedimiento y los tiempos varían mucho de uno a otro.</p></div></div>
-      <div class="stepx"><div class="n">03</div><div><h3>Reúne el resto de documentación</h3><p>Título jurídico que acredite la propiedad o el derecho de uso sobre el inmueble, y el acuerdo de la comunidad de propietarios en los casos en que sea exigible.</p></div></div>
-      <div class="stepx"><div class="n">04</div><div><h3>Presenta la declaración responsable</h3><p>Se presenta ante la Dirección General competente en materia de turismo, con carácter previo al inicio de la actividad. No es un simple papel: declaras que cumples todos los requisitos y respondes de ello.</p></div></div>
-      <div class="stepx"><div class="n">05</div><div><h3>Inscripción y número de registro</h3><p>La vivienda se inscribe en el Registro General de Empresas Turísticas de Cantabria. El número de registro debe aparecer en toda la publicidad y en los anuncios de los portales de reserva.</p></div></div>
-      <div class="stepx"><div class="n">06</div><div><h3>Acondiciona la vivienda</h3><p>La normativa exige equipamiento concreto de seguridad e información al huésped: detector de humo, extintor, botiquín, hojas de reclamaciones, información turística e identificación visible, entre otros elementos.</p></div></div>
+      <div class="stepx"><div class="n">02</div><div><h3>Solicita el informe de compatibilidad urbanística</h3><p>Se pide al ayuntamiento donde está la vivienda. Es el paso que más se alarga, porque muchos ayuntamientos siguen ajustando el procedimiento y los tiempos varían mucho de uno a otro. Según el municipio, pueden pedirte una memoria firmada por un técnico.</p></div></div>
+      <div class="stepx"><div class="n">03</div><div><h3>Reúne el resto de documentación</h3><p>Título jurídico que acredite la propiedad o el derecho de uso sobre el inmueble, y el acuerdo de la comunidad de propietarios en los casos en que sea exigible. Más abajo tienes la lista completa.</p></div></div>
+      <div class="stepx"><div class="n">04</div><div><h3>Acondiciona la vivienda antes de declarar</h3><p>Extintores, detector de humo, botiquín, placa identificativa, hojas de reclamaciones e información al huésped. Conviene tenerlo todo instalado antes del siguiente paso, porque en la declaración responsable afirmas que ya lo cumples.</p></div></div>
+      <div class="stepx"><div class="n">05</div><div><h3>Presenta la declaración responsable</h3><p>Se presenta ante la Dirección General competente en materia de turismo, con carácter previo al inicio de la actividad, a través de la <a href="https://sede.cantabria.es/sede/catalogo-de-tramites/tramite/declaracion-responsable-y-comunicaciones-de-establecimiento-turistico-vivienda-de-uso-turistico/6120" target="_blank" rel="noopener">sede electrónica del Gobierno de Cantabria</a>. No es un simple papel: declaras que cumples todos los requisitos y respondes de ello.</p></div></div>
+      <div class="stepx"><div class="n">06</div><div><h3>Inscripción y número de registro autonómico</h3><p>La vivienda se inscribe en el Registro General de Empresas Turísticas de Cantabria. El número de registro debe aparecer en toda la publicidad y en los anuncios de los portales de reserva.</p></div></div>
+      <div class="stepx"><div class="n">07</div><div><h3>Número del registro único estatal</h3><p>Desde julio de 2025 existe además un registro único de arrendamientos a nivel estatal. Su número también tiene que figurar en tus anuncios, y Airbnb o Booking lo comprueban antes de publicar.</p></div></div>
+      <div class="stepx"><div class="n">08</div><div><h3>Prepara el registro de viajeros</h3><p>Desde la primera reserva tendrás que comunicar los datos de los huéspedes al Ministerio del Interior. Conviene tenerlo resuelto antes de abrir, idealmente con un check-in online que lo automatice.</p></div></div>
     </div>
     <div class="warn rv">
       <p>No somos gestoría ni despacho de abogados, y esta página es informativa. Los requisitos concretos dependen de tu municipio y de la situación de tu vivienda, y la normativa se ha movido mucho en el último año. Para el trámite en sí conviene apoyarse en un profesional. Lo que sí podemos es contarte cómo lo estamos haciendo nosotros y ayudarte a ordenar los pasos.</p>
     </div>
-    <p class="src rv">Fuentes: Decreto 50/2025, de 24 de julio, publicado en el Boletín Oficial de Cantabria el 24 de julio de 2025, e instrucciones interpretativas de la Dirección General de Turismo y Hostelería publicadas en el BOC en marzo de 2026.</p>
+    <p class="src rv">Fuentes: Decreto 50/2025, de 24 de julio, publicado en el Boletín Oficial de Cantabria el 24 de julio de 2025, e instrucciones interpretativas de la Dirección General de Turismo y Hostelería publicadas en el BOC en marzo de 2026, y Real Decreto 1312/2024 sobre el registro único de arrendamientos.</p>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="eyebrow rv">Documentación</div>
+    <h2 class="rv rv-d1">Lo que vas a necesitar tener a mano</h2>
+    <p class="lead rv rv-d2">Agrupado en tres bloques: los papeles de la vivienda, la seguridad y lo que el huésped tiene que ver al entrar.</p>
+    <div class="doc-grid">
+      <div class="card rv"><h3>La vivienda y el titular</h3><ul>
+        <li>Escrituras o nota simple que acrediten la propiedad o el derecho de uso.</li>
+        <li>Autorización de los copropietarios, si los hay.</li>
+        <li>DNI o NIF del titular.</li>
+        <li>Acreditación de que la vivienda es habitable.</li>
+        <li>Informe de compatibilidad urbanística del ayuntamiento.</li>
+        <li>Acuerdo de la comunidad de propietarios, si es exigible.</li>
+      </ul></div>
+      <div class="card rv rv-d1"><h3>Seguridad</h3><ul>
+        <li>Extintor en cada planta, en lugar visible y accesible.</li>
+        <li>Contrato o factura de mantenimiento de los extintores.</li>
+        <li>Detector de humo.</li>
+        <li>Botiquín de primeros auxilios.</li>
+        <li>Seguro de responsabilidad civil.</li>
+      </ul></div>
+      <div class="card rv rv-d2"><h3>Lo que ve el huésped</h3><ul>
+        <li>Placa identificativa en el exterior de la puerta.</li>
+        <li>Cartel de hojas de reclamaciones y las propias hojas.</li>
+        <li>Teléfono de atención inmediata, visible.</li>
+        <li>Normas de uso, temporada y formas de pago.</li>
+        <li>Precios de los servicios a la vista.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="wrap">
+    <div class="eyebrow rv">Una vez abierta</div>
+    <h2 class="rv rv-d1">Obligaciones del día a día</h2>
+    <p class="lead rv rv-d2">Tener la licencia no es el final. Esto es lo que hay que mantener mientras la vivienda esté en funcionamiento.</p>
+    <ul class="svc-list rv rv-d2">
+      <li>Comunicar cualquier cambio en los datos declarados en un plazo de quince días.</li>
+      <li>Mantener el número de registro en todos los anuncios y la publicidad.</li>
+      <li>Entregar a cada huésped un justificante de pago del alojamiento.</li>
+      <li>Limpieza completa y cambio de ropa de cama entre estancias.</li>
+      <li>Reparar de inmediato las averías que surjan durante la estancia.</li>
+      <li>Conservar las hojas de admisión de viajeros al menos un año.</li>
+      <li>Comunicar los datos de los huéspedes al Ministerio del Interior.</li>
+      <li>Mantener al día la revisión de los extintores.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="eyebrow rv">Sanciones</div>
+    <h2 class="rv rv-d1">Qué te juegas si no está en regla</h2>
+    <p class="lead rv rv-d2">La normativa turística de Cantabria distingue tres niveles de infracción. Alquilar sin estar inscrito está entre las más graves, y la Administración ha reforzado las inspecciones.</p>
+    <table class="fines rv rv-d2">
+      <thead><tr><th>Infracción</th><th>Multa</th></tr></thead>
+      <tbody>
+        <tr><td>Leve</td><td>250 a 1.500 €</td></tr>
+        <tr><td>Grave</td><td>1.501 a 15.000 €</td></tr>
+        <tr><td>Muy grave</td><td>15.001 a 75.000 €</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="sec alt">
+  <div class="wrap">
+    <div class="eyebrow rv">Errores frecuentes</div>
+    <h2 class="rv rv-d1">Lo que vemos que más se repite</h2>
+    <ul class="errs rv rv-d2">
+      <li><b>Empezar por la sede del Gobierno y no por el ayuntamiento.</b> Sin el informe urbanístico, la declaración responsable no se sostiene.</li>
+      <li><b>Dar por hecho que la comunidad no dirá nada.</b> Si es un piso, pregunta antes de invertir en la reforma.</li>
+      <li><b>Un solo extintor para toda la casa.</b> Se exige uno por planta, con su mantenimiento al día.</li>
+      <li><b>Olvidar el número estatal en los anuncios.</b> La plataforma puede ocultar o bloquear el anuncio.</li>
+      <li><b>Seguir guías antiguas.</b> Mucha información que circula todavía cita el Decreto 225/2019, que ya no está en vigor.</li>
+    </ul>
   </div>
 </section>
 
@@ -269,7 +545,7 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}
   </div>
 </section>
 
-<section class="sec">
+<section class="sec alt">
   <div class="wrap">
     <div class="eyebrow rv">Dudas frecuentes</div>
     <h2 class="rv rv-d1">Preguntas sobre la licencia turística en Cantabria</h2>
@@ -289,6 +565,14 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}
       <div class="faq-item">
         <button class="faq-q">¿Tengo que poner el número de registro en Airbnb y Booking?</button>
         <div class="faq-a"><p>Sí. El número de registro debe figurar en los anuncios y en toda la publicidad de la vivienda. Es uno de los puntos que más incumplimientos genera y de los más fáciles de detectar para la administración.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Cuántos extintores necesito?</button>
+        <div class="faq-a"><p>Uno por cada planta de la vivienda, colocado en un lugar visible y de fácil acceso, y con su contrato o factura de mantenimiento. Es uno de los requisitos que se acreditan en la declaración responsable.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">¿Qué es el registro único estatal?</button>
+        <div class="faq-a"><p>Es un registro de arrendamientos de corta duración que funciona a nivel nacional desde julio de 2025. Es independiente del registro autonómico de Cantabria, así que necesitas los dos números y ambos deben aparecer en tus anuncios.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q">¿Me ayudáis con el trámite?</button>
