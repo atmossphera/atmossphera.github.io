@@ -32,7 +32,7 @@
 <meta name="twitter:image" content="https://atmosspherastudio.com/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Instrument+Sans:wght@400;500;600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;1,9..144,600&family=Big+Shoulders+Display:wght@800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
 <style>
 :root{--fog:#E7ECE3;--paper:#F3F6EF;--card:#FBFCF9;--pine:#1E3A2C;--moss:#3E6B4E;--sage:#8CA187;
 --ink:#20302A;--muted:#5B6B60;--line:#CFD8CB;--amber:#E0A64B;--maxw:1120px;
@@ -198,6 +198,177 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}
   ]
 }
 </script>
+<style id="exlibris">
+/* ===== Ex Libris: capa de formato sobre la web actual (solo estilo, mismo contenido) ===== */
+:root{
+  --fog:#EAE0C6; --paper:#F2EBD8; --card:#F6F0E0;
+  --pine:#1F3326; --moss:#6E2A2A; --sage:#C2A15A; --sea:#4A5A4F;
+  --ink:#1F3326; --muted:#4A5A4F; --line:#CBBF9E;
+  --clay:#6E2A2A; --amber:#C2A15A; --good:#6E2A2A;
+  --serif:"Fraunces",Georgia,"Times New Roman",serif;
+  --poster:"Big Shoulders Display","Arial Narrow",sans-serif;
+  --sans:"DM Sans",system-ui,sans-serif;
+  --frame:none;
+}
+body{background:var(--fog)}
+h1,h2,h3{letter-spacing:-.01em;font-weight:600}
+.sec-ttl .em,.sec-ttl em,h1 .em{font-style:italic;color:var(--moss)}
+.eyebrow{font-family:var(--poster);font-weight:800;font-size:.95rem;letter-spacing:.18em;color:var(--moss)}
+
+/* botones rectos, como en los posts */
+.btn,.nav-cta{border-radius:6px}
+.btn-primary{background:var(--moss);color:#F2EBD8}
+.btn-primary:hover{background:#5a2222;box-shadow:none}
+.btn-ghost{border-color:var(--pine)}
+.nav-cta{border-color:var(--moss);color:var(--moss)}
+.nav-cta:hover{background:var(--moss);color:#F2EBD8}
+
+/* cabecera */
+header.nav{background:rgba(234,224,198,.94);border-bottom:1px solid var(--pine)}
+.menu a{font-size:.8rem;letter-spacing:.12em}
+.menu a::after{background:var(--moss)}
+.progress{background:var(--moss)}
+
+/* portada: pliego con doble filete y foto con doble filete */
+.hero{background:var(--fog)}
+
+.hero h1{font-size:clamp(2.2rem,3.8vw,3.2rem);line-height:1.06}
+.hero-media{max-width:460px;justify-self:center;width:100%}
+.hero-media img{border-radius:14px;aspect-ratio:4/5;object-fit:cover;border:0;outline:1.5px solid var(--pine);outline-offset:10px;box-shadow:0 18px 40px rgba(20,40,30,.20),0 4px 10px rgba(20,40,30,.10)}
+.gbadge{background:transparent;border:0;padding-left:0}
+.gbadge:hover{box-shadow:none}
+
+
+/* cifras en DM Sans para que se lean bien (IM Fell usa números antiguos) */
+.hero-stats .s .n,.band .big,.mk .n,.rrow .v,.field label b,.step .st-n,.updelta .pct{font-family:var(--sans);font-weight:500}
+.hero-stats .s .n,.band .big,.mk .n{font-family:var(--poster);font-weight:800}
+.hero-stats .s .n{color:var(--moss);font-size:2.5rem}
+.hero-stats{border-top:1px solid var(--pine);padding-top:26px}
+
+/* franja y bandas oscuras */
+.strip{background:var(--pine);color:#EAE0C6;border-block:1px solid #142219}
+.strip span{font-family:var(--poster);font-weight:800;letter-spacing:.24em}
+.band{background:var(--pine);color:#EAE0C6}
+.band .big{color:var(--amber)}
+.band p{color:#D6CCB2}
+.band .btn{background:#EAE0C6;color:var(--pine)}
+
+/* tarjetas: esquinas rectas y doble filete */
+.pillar,.mk,.calc-panel,.result,.pcard,.zcard,.tile{border-radius:8px;border:1.5px solid var(--pine);box-shadow:none;background:var(--card)}
+.pillar:hover,.mk:hover,.pcard:hover,.zcard:hover{box-shadow:0 12px 28px rgba(31,51,38,.12);border-color:var(--pine)}
+.pillar .num{font-style:italic;font-size:1.3rem}
+.tile.offer{background:var(--paper)}
+.tile .tag,.calc-panel .cap,.pcard .role,.zcard .zl{color:var(--moss)}
+
+/* calculadora */
+.rrow{border-bottom-color:var(--line)}
+.rrow.up{background:#EFE4C6}
+.rrow.up .v{color:var(--moss)}
+.bar.a>i{background:var(--sea)}
+.bar.b>i{background:var(--moss)}
+input[type=range]{background:var(--line)}
+input[type=range]::-webkit-slider-thumb{background:var(--moss);border-color:var(--card)}
+input[type=range]::-moz-range-thumb{background:var(--moss);border-color:var(--card)}
+
+/* reseñas */
+.revs{background:var(--pine);color:#EAE0C6}
+.revs h2{color:#EAE0C6}
+.revs .eyebrow{color:var(--amber)}
+.revs .lead{color:#D6CCB2}
+.rev-hero{background:#182a20;border:1.5px solid var(--amber);border-radius:8px;box-shadow:none}
+.rev-hero .q{color:#EAE0C6;font-style:italic}
+.rev{border-radius:8px;border-color:rgba(194,161,90,.45);background:transparent}
+.rev:hover{border-color:var(--amber);background:rgba(234,224,198,.04)}
+.rev p{color:#E2D9C1}
+.rev .who,.rev-hero .who{color:var(--amber)}
+.revs-cta .btn-primary{background:#EAE0C6;color:var(--pine)}
+
+/* equipo: fotos en arco */
+.pcard .ph{border-radius:8px;height:130px;border:0;outline:1.5px solid var(--pine);outline-offset:5px;padding:0;background:var(--card);overflow:hidden;box-shadow:0 8px 18px rgba(20,40,30,.18)}
+.pcard .ph img{border-radius:8px}
+.pcard .nm{font-size:1.45rem}
+@media(max-width:560px){.pcard .ph{height:92px}}
+
+/* servicios, proceso, faq, zonas */
+.svc-list li{border-bottom-color:var(--line)}
+.svc-list li::before{border-radius:0;transform:rotate(45deg);width:10px;height:10px;border-color:var(--moss);top:24px}
+.svc-list li:hover::before{background:var(--moss)}
+.steps{border-top:2px solid var(--pine)}
+.step{border-bottom-color:var(--pine)}
+.step .st-n{color:var(--amber);font-size:1.6rem}
+.faq-list{border-top:2px solid var(--pine)}
+.faq-item{border-bottom-color:var(--pine)}
+.faq-q::after{color:var(--moss)}
+.zcard .zn{font-size:1.35rem}
+
+/* instagram */
+.ig-grid a{border-radius:6px;overflow:hidden;border-color:var(--pine)}
+
+/* pie */
+footer{background:var(--pine);color:#D6CCB2}
+
+</style>
+<style id="exlibris-guias">
+/* Ex Libris aplicado a páginas de guía */
+.hero{background:var(--fog);border-bottom:1px solid var(--pine)}
+.crumbs a{color:var(--moss)}
+.crumbs span[aria-hidden]{color:var(--sage)}
+.meta{font-size:.85rem;color:var(--muted);margin-top:1rem}
+.sec.alt{background:var(--paper);border-block:1px solid var(--pine)}
+.card{border-radius:8px;border:1.5px solid var(--pine);background:var(--card);box-shadow:none}
+.card:hover{border-color:var(--pine);box-shadow:0 12px 28px rgba(31,51,38,.12)}
+.card h3{font-weight:600}
+.steps{border-top:2px solid var(--pine)}
+.stepx{border-bottom-color:var(--pine)}
+.stepx .n{font-family:var(--poster);font-weight:800;color:var(--amber);font-size:1.8rem}
+.warn{background:var(--paper);border-left:3px solid var(--moss);border-radius:0 8px 8px 0}
+.warn p{color:var(--ink)}
+.faq-list{border-top:2px solid var(--pine)}
+.faq-item{border-bottom-color:var(--pine)}
+.faq-q{font-weight:600}
+.faq-q::after{color:var(--moss)}
+.doc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.doc-grid .card ul{margin:.4rem 0 0;padding:0;list-style:none}
+.doc-grid .card li{position:relative;padding:8px 0 8px 22px;border-bottom:1px solid var(--line);color:var(--muted);font-size:.95rem}
+.doc-grid .card li:last-child{border-bottom:0}
+.doc-grid .card li::before{content:"";position:absolute;left:2px;top:16px;width:8px;height:8px;border:1.5px solid var(--moss);transform:rotate(45deg)}
+.fines{width:100%;max-width:620px;border-collapse:collapse;margin-top:36px;font-size:1rem}
+.fines th,.fines td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--pine)}
+.fines th{font-family:var(--poster);font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.85rem;color:var(--moss)}
+.fines td:last-child{font-weight:600;color:var(--moss);white-space:nowrap}
+.errs{margin-top:36px;padding:0;list-style:none;max-width:760px}
+.errs li{padding:18px 0 18px 34px;border-bottom:1px solid var(--line);position:relative;color:var(--muted)}
+.errs li b{color:var(--ink)}
+.errs li::before{content:"✕";position:absolute;left:4px;top:18px;color:var(--moss);font-weight:600}
+.guides{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.guide{display:flex;flex-direction:column;text-decoration:none;color:inherit;border-radius:8px;border:1.5px solid var(--pine);background:var(--card);padding:30px 26px;transition:.35s cubic-bezier(.16,.84,.44,1)}
+a.guide:hover{transform:translateY(-5px);box-shadow:0 12px 28px rgba(31,51,38,.12)}
+.guide .gn{font-family:var(--serif);font-style:italic;font-weight:600;font-size:1.3rem;color:var(--amber)}
+.guide .gc{font-family:var(--poster);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.8rem;color:var(--moss);margin-top:14px}
+.guide h3{font-size:1.35rem;margin:.4rem 0 .6rem}
+.guide p{color:var(--muted);font-size:.96rem;flex:1;margin:0}
+.guide .gl{margin-top:20px;font-weight:600;font-size:.9rem;color:var(--moss)}
+.guide.feat{grid-column:1/-1;background:var(--pine);color:#EAE0C6;border-color:var(--pine);padding:40px}
+.guide.feat h3{color:#EAE0C6;font-size:clamp(1.6rem,3vw,2.1rem);max-width:26ch}
+.guide.feat p{color:#D6CCB2;max-width:62ch}
+.guide.feat .gc,.guide.feat .gl{color:var(--amber)}
+.guide.soon{opacity:.62}
+.guide.soon .gl{color:var(--muted);font-weight:500}
+@media(max-width:900px){.doc-grid,.guides{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.doc-grid,.guides{grid-template-columns:1fr}.guide.feat{padding:30px 24px}}
+</style>
+<style id="menu-current">
+.menu{gap:30px}.menu a{position:relative;color:var(--ink)}.menu a::after{content:"";position:absolute;left:0;right:100%;bottom:-5px;height:1.5px;background:var(--moss);transition:right .3s}.menu a:hover::after,.menu a[aria-current="page"]::after{right:0}
+.menu a[aria-current="page"]{opacity:1;color:var(--moss)}
+@media(min-width:901px){.nav-in{position:relative}.nav-in>nav{position:absolute;left:50%;transform:translateX(-50%)}}
+.plan.best{background:var(--paper);border-color:var(--moss)}
+.cant-out{fill:var(--paper);stroke:var(--pine)}
+.tooltip{background:var(--pine);color:#EAE0C6}.tooltip b,.tooltip .tl em{color:#F2EBD8}.tooltip .tl{color:#D6CCB2}
+.about{background:var(--pine);color:#EAE0C6}.about h2,.about-card .q{color:#F2EBD8}.about .lead{color:#D6CCB2}
+.about-card{background:#182a20;border:1.5px solid var(--amber);border-radius:8px}.about-card .who{color:var(--amber)}
+.band h2,.band h3{color:#F2EBD8}.band .big{color:var(--amber)}
+footer{color:#D6CCB2}
+</style>
 </head>
 <body>
 
@@ -208,9 +379,9 @@ footer{background:var(--pine);color:#9DB39A;padding:32px 0;font-size:.85rem}
       <ul class="menu">
         <li><a href="/#concepto">Concepto</a></li>
         <li><a href="/tarifas.html">Tarifas</a></li>
-        <li><a href="/zonas.html">Zonas</a></li>
-        <li><a href="/mercado.html">Mercado</a></li>
         <li><a href="/#nosotros">Nosotros</a></li>
+        <li><a href="/taller.html">Taller</a></li>
+        <li><a href="/guias.html" aria-current="page">Guías</a></li>
       </ul>
     </nav>
     <a class="nav-cta" href="/#contacto">Diagnóstico gratis</a>
