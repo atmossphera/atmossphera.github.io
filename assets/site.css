@@ -1,0 +1,20 @@
+/* Cabecera y pie compartidos por todas las páginas (excepto la portada, que lleva su propia cabecera animada) */
+header.sh,footer.sf{--sf-fog:#EAE0C6;--sf-paper:#F2EBD8;--sf-pine:#1F3326;--sf-clay:#6E2A2A;--sf-amber:#C2A15A;--sf-muted:#4A5A4F;--sf-line:#CBBF9E;font-family:'DM Sans',system-ui,sans-serif;box-sizing:border-box;}
+header.sh *,footer.sf *{box-sizing:border-box;}
+header.sh{position:sticky;top:0;z-index:60;background:rgba(234,224,198,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--sf-line);color:var(--sf-pine);}
+header.sh .sh-in{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:72px;padding:0 clamp(18px,4vw,48px);}
+header.sh .sh-brand{display:flex;align-items:center;gap:10px;color:var(--sf-pine);text-decoration:none;font-weight:500;font-size:17px;letter-spacing:.02em;}
+header.sh .sh-brand img{height:21px;width:auto;display:block;}
+header.sh .sh-cta{background:var(--sf-amber);color:var(--sf-pine);border-radius:999px;padding:0 24px;min-height:44px;display:inline-flex;align-items:center;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;box-shadow:0 6px 18px rgba(31,51,38,.18);}
+header.sh .sh-cta:hover{background:var(--sf-pine);color:var(--sf-paper);}
+footer.sf{background:var(--sf-fog);color:var(--sf-pine);border-top:1px solid var(--sf-line);padding:52px 24px 40px;text-align:center;font-size:15px;line-height:1.5;}
+footer.sf .sf-in{max-width:960px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:22px;}
+footer.sf .sf-logo{height:30px;width:auto;display:block;}
+footer.sf nav.sf-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 30px;}
+footer.sf nav.sf-nav a{color:var(--sf-pine);text-decoration:none;font-weight:500;font-size:16px;padding:8px 0;border-bottom:1px solid transparent;}
+footer.sf nav.sf-nav a:hover{color:var(--sf-clay);border-bottom-color:var(--sf-clay);}
+footer.sf .sf-legal{display:flex;flex-wrap:wrap;justify-content:center;gap:2px 22px;padding-top:20px;border-top:1px solid var(--sf-line);width:100%;}
+footer.sf .sf-legal a{color:var(--sf-muted);text-decoration:underline;text-underline-offset:3px;font-size:14px;padding:6px 0;}
+footer.sf .sf-legal a:hover{color:var(--sf-clay);}
+footer.sf .sf-copy{margin:0;color:var(--sf-muted);font-size:13.5px;max-width:34em;}
+@media(max-width:560px){footer.sf{padding:40px 20px 32px;} footer.sf nav.sf-nav{gap:2px 22px;} header.sh .sh-cta{padding:0 18px;font-size:12px;}}

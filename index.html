@@ -24,6 +24,7 @@
 <meta name="twitter:description" content="Gestión de alquiler vacacional en Cantabria. Subimos la rentabilidad de tu vivienda con datos y dinamización del precio en tiempo real, sin que cambies nada de lo que ya usas.">
 <meta name="twitter:image" content="https://atmosspherastudio.com/og-image.jpg">
 <link rel="canonical" href="https://atmosspherastudio.com/">
+<link rel="stylesheet" href="/assets/site.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
@@ -359,7 +360,7 @@ header.top.away{transform:translateY(-110%);opacity:0;pointer-events:none;}
 .fab:hover{background:var(--paper);color:var(--pine);}
 .pcard .viz{height:318px;}
 .pcard .ph{height:150px;}
-.pcard .ph img{object-position:50% 58%;}
+.pcard .ph img{object-position:50% 14%;}
 .pcard .ltitle{font-size:14.5px;}
 .pcard .checks{gap:3px;}
 .insta{margin-bottom:56px;}
@@ -396,6 +397,22 @@ header.top .lg{height:21px;width:auto;display:block;} header.top .lg-g{display:n
 header.top.light .lg-w,header.top.static .lg-w{display:none;} header.top.light .lg-g,header.top.static .lg-g{display:block;}
 .fbrand img{height:21px;width:auto;}
 .btn.btn-clay{background:var(--clay);color:#F6F0E0;border:1px solid var(--clay);} .btn.btn-clay:hover{background:#5a2222;border-color:#5a2222;}
+
+/* Ajuste 7: reseñas deslizables, preguntas en recuadro, pie claro */
+.rgrid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;outline-offset:4px;}
+.rgrid::-webkit-scrollbar{display:none;}
+.rgrid .rcard{flex:0 0 calc(50% - 6px);scroll-snap-align:start;display:flex;flex-direction:column;}
+.rgrid .rcard cite{margin-top:auto;}
+.rnav{display:flex;justify-content:flex-end;gap:10px;margin-top:16px;}
+.rnav button{width:46px;height:46px;border-radius:50%;border:1px solid rgba(194,161,90,.6);background:transparent;color:var(--amber);font-size:26px;line-height:1;cursor:pointer;}
+.rnav button:hover{background:var(--amber);color:var(--pine);}
+.faqsec{margin-top:72px;margin-bottom:0;padding-bottom:88px;}
+.faqb{display:block;padding:48px 44px;}
+.faqb h2{margin:6px 0 22px;}
+.faqb .ffaq{padding:0;border:0;}
+.faqb .ffaq details:first-child{border-top:1px solid rgba(214,204,178,.25);}
+footer.sf{margin-top:0;}
+@media(max-width:700px){.rgrid .rcard{flex-basis:86%;} .faqb{padding:32px 22px;}}
 </style>
 <script type="application/ld+json">
 {
@@ -641,7 +658,7 @@ header.top.light .lg-w,header.top.static .lg-w{display:none;} header.top.light .
         <div><h3>Atención al huésped</h3><p>Llegada sin fricciones y seguimiento durante la estancia, para que lleguen reservas y buenas reseñas.</p></div>
       </div>
     </div>
-    <div class="actions" style="justify-content:flex-start;margin-top:28px;">
+    <div class="actions" style="justify-content:center;margin-top:32px;">
       <a class="btn btn-clay" href="/tarifas.html">Ver tarifas</a>
     </div>
   </div>
@@ -679,13 +696,14 @@ header.top.light .lg-w,header.top.static .lg-w{display:none;} header.top.light .
     <div class="kick">Lo que dicen de nosotros</div>
     <h2 id="h-op">Propietarios y huéspedes, en sus palabras</h2>
     <figure class="rfeat"><p>Muy profesionales. Me explicaron con números reales por qué mi casa estaba mal posicionada y lo corrigieron.</p><figcaption><cite>Yusef Mustafa</cite></figcaption></figure>
-    <div class="rgrid">
+    <div class="rgrid" id="rgrid" tabindex="0" aria-label="Reseñas, desliza para ver más">
       <figure class="rcard"><span class="stars" aria-label="5 estrellas">★★★★★</span><p>Trato cercano y de confianza. Se nota que cuidan la casa como si fuera suya.</p><cite>Daniel</cite></figure>
       <figure class="rcard"><span class="stars" aria-label="5 estrellas">★★★★★</span><p>Muy atentos, me ayudaron mucho con la gestión de mis apartamentos. Sin duda los recomendaría.</p><cite>Mar Galindo</cite></figure>
       <figure class="rcard"><span class="stars" aria-label="5 estrellas">★★★★★</span><p>Recomendable 100% para cualquier propietario.</p><cite>Anónimo</cite></figure>
       <figure class="rcard"><span class="stars" aria-label="5 estrellas">★★★★★</span><p>Excelente atención. Grandes profesionales.</p><cite>Julio Comodo</cite></figure>
       <figure class="rcard"><span class="stars" aria-label="5 estrellas">★★★★★</span><p>Trato buenísimo. Volveremos seguro a Cantabria.</p><cite>Antony</cite></figure>
     </div>
+    <div class="rnav"><button type="button" id="rprev" aria-label="Reseñas anteriores">&#8249;</button><button type="button" id="rnext" aria-label="Reseñas siguientes">&#8250;</button></div>
   </div>
 </section>
 
@@ -743,32 +761,36 @@ header.top.light .lg-w,header.top.static .lg-w{display:none;} header.top.light .
     </div>
     </section>
 
-<footer class="foot" id="foot">
-  <div class="fwrap">
-    <section class="ffaq" aria-labelledby="h-faq">
+<section class="blk faqsec" id="preguntas" aria-labelledby="h-faq">
+  <div class="wrap">
+    <div class="nocomp faqb">
+      <div class="kick">Preguntas frecuentes</div>
       <h2 id="h-faq">Lo que nos preguntan los propietarios</h2>
+      <div class="ffaq">
       <details><summary>¿En qué zonas de Cantabria gestionáis viviendas?</summary><p>En toda Cantabria, sobre todo en la costa occidental: Oyambre, Comillas, San Vicente de la Barquera, Santillana del Mar, Suances, Cabezón de la Sal y Udías. Hay páginas propias de Comillas, San Vicente de la Barquera, Suances y Santander.</p></details>
       <details><summary>¿Tengo que cambiar de PMS o de plataforma?</summary><p>No. Conectamos y operamos tu PMS, tu channel manager o tus herramientas de precios actuales. No tienes que cambiar de sistema ni aprender nada nuevo.</p></details>
       <details><summary>¿Cuánto cobráis por gestionar mi vivienda vacacional?</summary><p>Una comisión sobre lo que cobra el huésped, una vez descontada la comisión de la plataforma. Las noches vacías no se cobran y no hay permanencia. El porcentaje depende de si eliges gestión online o gestión completa, con check-in presencial y limpieza coordinada. <a href="https://atmosspherastudio.com/tarifas.html">Ver tarifas</a>.</p></details>
       <details><summary>¿Quién decide qué reservas se aceptan?</summary><p>Tú. Nosotros filtramos las solicitudes y te damos una recomendación, pero la decisión final sobre cada reserva y sobre cualquier inversión en la vivienda es tuya. Cada mes recibes un informe de ingresos y ocupación.</p></details>
       <details><summary>¿Cuánto tardáis en poner mi vivienda en marcha?</summary><p>Menos de una semana. El primer día analizamos tu anuncio y la zona; del segundo al cuarto reescribimos el anuncio y activamos el precio dinámico; a partir del quinto empieza la gestión del día a día.</p></details>
-    </section>
-    <nav class="fnav" aria-label="Más información">
-      <a href="https://atmosspherastudio.com/tarifas.html">Tarifas</a>
-      <a href="https://atmosspherastudio.com/taller.html">Taller</a>
-      <a href="https://atmosspherastudio.com/guias.html">Guías</a>
-      <a href="https://atmosspherastudio.com/mercado.html">Mercado</a>
-      <a href="#h-faq">Preguntas frecuentes</a>
-      <a href="https://atmosspherastudio.com/licencia-turistica-cantabria.html">Licencia turística</a>
-      <a href="https://atmosspherastudio.com/zonas.html">Zonas</a>
-    </nav>
-    <div class="fbottom">
-      <div class="fbrand">
-        <img src="/logo-icon-white.png" alt="" width="46" height="21">
-        <span>© 2026 Atmossphera Studio. Gestión de alojamientos vacacionales en Cantabria.</span>
       </div>
-      <div class="legal"><a href="/legal/aviso-legal.html">Aviso legal</a><a href="/legal/politica-de-privacidad.html">Política de privacidad</a><a href="/legal/politica-de-cookies.html">Política de cookies</a></div>
     </div>
+  </div>
+</section>
+
+<footer class="sf" id="foot">
+  <div class="sf-in">
+    <img class="sf-logo" src="/logo-icon-green.png" alt="Atmossphera Studio" width="64" height="30">
+    <nav class="sf-nav" aria-label="Más información">
+      <a href="/tarifas.html">Tarifas</a>
+      <a href="/taller.html">Taller</a>
+      <a href="/guias.html">Guías</a>
+      <a href="/mercado.html">Mercado</a>
+      <a href="/#preguntas">Preguntas frecuentes</a>
+      <a href="/licencia-turistica-cantabria.html">Licencia turística</a>
+      <a href="/zonas.html">Zonas</a>
+    </nav>
+    <div class="sf-legal"><a href="/legal/aviso-legal.html">Aviso legal</a><a href="/legal/politica-de-privacidad.html">Política de privacidad</a><a href="/legal/politica-de-cookies.html">Política de cookies</a></div>
+    <p class="sf-copy">© 2026 Atmossphera Studio. Gestión de alojamientos vacacionales en Cantabria.</p>
   </div>
 </footer>
 
@@ -897,7 +919,7 @@ header.top.light .lg-w,header.top.static .lg-w{display:none;} header.top.light .
   // portada fija: el scroll de Lenis ya suaviza, por eso scrub directo (sin segundo suavizado)
   gsap.set('.s2', { autoAlpha: 0, y: 40 });
   var tl = gsap.timeline({
-    scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=2200', scrub: true, pin: true }
+    scrollTrigger: { trigger: '#hero', start: 'top top', end: (window.innerWidth < 768 ? '+=1300' : '+=2200'), scrub: true, pin: true }
   });
   tl.to('.layer.coast img', { scale: 1.3, ease: 'none', duration: 9 }, 0)
     .to('#hint', { autoAlpha: 0, duration: 0.6 }, 0.3)
@@ -908,7 +930,7 @@ header.top.light .lg-w,header.top.static .lg-w{display:none;} header.top.light .
     .to({}, { duration: 1.6 }, 7.4);
 
   // cabecera: blanca sobre fotos y secciones oscuras, oscura sobre crema
-  var hdr = $('topbar'), darkEls = [$('hero'), $('duo'), $('opiniones'), $('foot')];
+  var hdr = $('topbar'), darkEls = [$('hero'), $('duo'), $('opiniones'), $('preguntas')];
   function upd() {
     var dark = darkEls.some(function (el) { var r = el.getBoundingClientRect(); return r.top <= 42 && r.bottom >= 42; });
     hdr.classList.toggle('light', !dark);
@@ -935,7 +957,7 @@ header.top.light .lg-w,header.top.static .lg-w{display:none;} header.top.light .
   // propietarios: conversación rápida, pocos píxeles de scroll
   var msgs = gsap.utils.toArray('#duo .msg').slice(1);
   gsap.set(msgs, { autoAlpha: 0, y: 22 });
-  var td = gsap.timeline({ scrollTrigger: { trigger: '#duo', start: 'top top', end: '+=1000', scrub: true, pin: true } });
+  var td = gsap.timeline({ scrollTrigger: { trigger: '#duo', start: 'top top', end: (window.innerWidth < 768 ? '+=700' : '+=1000'), scrub: true, pin: true } });
   td.fromTo('#duoImg', { scale: 1 }, { scale: 1.25, ease: 'none', duration: 3.6 }, 0);
   msgs.forEach(function (m, i) { td.to(m, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0.2 + i * 0.5); });
   td.to({}, { duration: 0.5 });
@@ -993,6 +1015,11 @@ header.top.light .lg-w,header.top.static .lg-w{display:none;} header.top.light .
 
   window.addEventListener('load', function () { ScrollTrigger.refresh(); });
 })();
+
+  (function(){ var g=document.getElementById('rgrid'); if(!g) return;
+    function step(){ var c=g.querySelector('.rcard'); return c? c.getBoundingClientRect().width+12 : 300; }
+    var go=function(d){ g.scrollBy({left:d*step()*(window.innerWidth>700?2:1),behavior:'smooth'}); };
+    document.getElementById('rprev').onclick=function(){go(-1);}; document.getElementById('rnext').onclick=function(){go(1);}; })();
 </script>
 </body>
 </html>
