@@ -420,6 +420,18 @@ footer.sf{margin-top:0;}
   header.top .wrap{min-height:68px;}
   .top-cta{min-height:40px;padding:0 18px;font-size:12px;}
 }
+
+/* Ajuste 8 */
+.zchips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.zchips a{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:9px 16px;font-size:14.5px;font-weight:500;color:var(--pine);text-decoration:none;line-height:1.2;transition:border-color .25s,background .25s;}
+.zchips a:hover{border-color:var(--clay);background:var(--paper);}
+#zonas .blk-h{font-size:clamp(24px,3vw,32px);text-align:center;margin-bottom:18px;}
+#zonas .znote{text-align:center;font-size:14.5px;margin:16px 0 0;}
+#zonas.blk{padding-top:0;}
+#contacto.cband{text-align:center;} #contacto.cband p{margin:16px auto 0;} #contacto.cband .actions{justify-content:center;}
+.pcard #ltitle{display:none;}
+.pcard .ph{height:auto;display:flex;justify-content:center;border-radius:0;overflow:visible;}
+.pcard .ph img{height:158px;width:auto;max-width:100%;object-fit:contain;border-radius:8px;}
 </style>
 <script type="application/ld+json">
 {
@@ -732,17 +744,17 @@ footer.sf{margin-top:0;}
 <section id="zonas" class="blk" aria-labelledby="h-zonas">
   <div class="wrap">
     <h2 id="h-zonas" class="blk-h">Gestión de alquiler vacacional <em>por zonas</em></h2>
-    <div class="zgrid">
-      <a href="https://atmosspherastudio.com/gestion-alquiler-vacacional-cantabria.html"><b>Toda Cantabria</b><span>Qué incluye la gestión y cuánto cuesta.</span></a>
-      <a href="https://atmosspherastudio.com/gestion-alquiler-vacacional-comillas.html"><b>Comillas y Oyambre</b><span>Entorno del parque natural y la temporada baja.</span></a>
-      <a href="https://atmosspherastudio.com/gestion-alquiler-vacacional-san-vicente-de-la-barquera.html"><b>San Vicente de la Barquera</b><span>Playa, puerto y base para los Picos de Europa.</span></a>
-      <a href="https://atmosspherastudio.com/gestion-alquiler-vacacional-suances.html"><b>Suances</b><span>Mucha oferta parecida y cómo competir sin bajar el precio.</span></a>
-      <a href="https://atmosspherastudio.com/gestion-alquiler-vacacional-santillana-del-mar.html"><b>Santillana del Mar</b><span>Destino patrimonial todo el año, con estancias cortas.</span></a>
-      <a href="https://atmosspherastudio.com/gestion-alquiler-vacacional-torrelavega.html"><b>Torrelavega</b><span>Estancias de media duración todo el año, con menos competencia.</span></a>
-      <a href="https://atmosspherastudio.com/gestion-alquiler-vacacional-santander.html"><b>Santander</b><span>La única zona que funciona los doce meses.</span></a>
-      <a href="https://atmosspherastudio.com/zonas.html"><b>Todos los municipios</b><span>Udías, Cóbreces, Ruiloba, Cabuérniga, Liérganes, Liencres y más.</span></a>
+    <div class="zchips" role="list">
+      <a role="listitem" href="/gestion-alquiler-vacacional-cantabria.html">Toda Cantabria</a>
+      <a role="listitem" href="/gestion-alquiler-vacacional-comillas.html">Comillas y Oyambre</a>
+      <a role="listitem" href="/gestion-alquiler-vacacional-san-vicente-de-la-barquera.html">San Vicente de la Barquera</a>
+      <a role="listitem" href="/gestion-alquiler-vacacional-suances.html">Suances</a>
+      <a role="listitem" href="/gestion-alquiler-vacacional-santillana-del-mar.html">Santillana del Mar</a>
+      <a role="listitem" href="/gestion-alquiler-vacacional-torrelavega.html">Torrelavega</a>
+      <a role="listitem" href="/gestion-alquiler-vacacional-santander.html">Santander</a>
+      <a role="listitem" href="/zonas.html">Todos los municipios</a>
     </div>
-    <p class="znote">¿Dudas con la licencia? Lee la <a href="https://atmosspherastudio.com/licencia-turistica-cantabria.html">guía de licencia turística (Decreto 50/2025)</a>.</p>
+    <p class="znote">¿Dudas con la licencia? Lee la <a href="/licencia-turistica-cantabria.html">guía de licencia turística (Decreto 50/2025)</a>.</p>
   </div>
 </section>
 </main>
@@ -792,9 +804,6 @@ footer.sf{margin-top:0;}
       <a href="/taller.html">Taller</a>
       <a href="/guias.html">Guías</a>
       <a href="/mercado.html">Mercado</a>
-      <a href="/#preguntas">Preguntas frecuentes</a>
-      <a href="/licencia-turistica-cantabria.html">Licencia turística</a>
-      <a href="/zonas.html">Zonas</a>
     </nav>
     <div class="sf-legal"><a href="/legal/aviso-legal.html">Aviso legal</a><a href="/legal/politica-de-privacidad.html">Política de privacidad</a><a href="/legal/politica-de-cookies.html">Política de cookies</a></div>
     <p class="sf-copy">© 2026 Atmossphera Studio. Gestión de alojamientos vacacionales en Cantabria.</p>
