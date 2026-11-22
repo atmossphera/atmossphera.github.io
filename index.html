@@ -466,6 +466,12 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
   .sform .go{min-height:48px;}
   .searchbar{bottom:20px;}
 }
+
+/* movimiento reducido: sin animaciones, solo la primera portada, cabecera blanca sobre la foto */
+.rm .s2{display:none;} .rm .hint{display:none;}
+.rm header.top.static{color:#fff;}
+.rm header.top.static .lg-w{display:block;} .rm header.top.static .lg-g{display:none;}
+.rm .rcard,.rm .panel{opacity:1;}
 </style>
 <script type="application/ld+json">
 {
@@ -832,15 +838,16 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
 
 <footer class="sf" id="foot">
   <div class="sf-in">
-    <img class="sf-logo" src="/logo-icon-green.png" alt="Atmossphera Studio" width="64" height="30">
     <nav class="sf-nav" aria-label="Más información">
       <a href="/tarifas.html">Tarifas</a>
       <a href="/taller.html">Taller</a>
       <a href="/guias.html">Guías</a>
       <a href="/mercado.html">Mercado</a>
     </nav>
-    <div class="sf-legal"><a href="/legal/aviso-legal.html">Aviso legal</a><a href="/legal/politica-de-privacidad.html">Política de privacidad</a><a href="/legal/politica-de-cookies.html">Política de cookies</a></div>
-    <p class="sf-copy">© 2026 Atmossphera Studio. Gestión de alojamientos vacacionales en Cantabria.</p>
+    <div class="sf-row">
+      <div class="sf-left"><img class="sf-logo" src="/logo-icon-green.png" alt="Atmossphera Studio" width="40" height="19"><span class="sf-copy">© 2026 Atmossphera Studio. Gestión de alojamientos vacacionales en Cantabria.</span></div>
+      <div class="sf-legal"><a href="/legal/aviso-legal.html">Aviso legal</a><a href="/legal/politica-de-privacidad.html">Política de privacidad</a><a href="/legal/politica-de-cookies.html">Política de cookies</a></div>
+    </div>
   </div>
 </footer>
 
@@ -939,7 +946,7 @@ html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
   document.querySelectorAll('[data-top]').forEach(function (a) { a.addEventListener('click', goTop); });
 
   if (reduce || !window.gsap || !window.ScrollTrigger) {
-    $('topbar').classList.add('static');
+    $('topbar').classList.add('static'); document.documentElement.classList.add('rm');
     return;
   }
   gsap.registerPlugin(ScrollTrigger);
