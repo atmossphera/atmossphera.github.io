@@ -413,6 +413,13 @@ header.top.light .lg-w,header.top.static .lg-w{display:none;} header.top.light .
 .faqb .ffaq details:first-child{border-top:1px solid rgba(214,204,178,.25);}
 footer.sf{margin-top:0;}
 @media(max-width:700px){.rgrid .rcard{flex-basis:86%;} .faqb{padding:32px 22px;}}
+
+@media(max-width:767px){
+  .fab{right:14px;bottom:14px;min-height:42px;padding:0 18px;font-size:12px;}
+  header.top.light{background:rgba(234,224,198,.94);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+  header.top .wrap{min-height:68px;}
+  .top-cta{min-height:40px;padding:0 18px;font-size:12px;}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -939,10 +946,18 @@ footer.sf{margin-top:0;}
   upd();
 
   // al bajar: se va la cabecera y aparece el botón abajo a la derecha; al subir: vuelve la cabecera
-  var fab = $('fab'), lastY = window.pageYOffset || 0;
+  var fab = $('fab'), lastY = window.pageYOffset || 0, heroEl = $('hero'), contEl = $('contacto');
+  function fabBlocked() {
+    var vh = window.innerHeight;
+    // en el móvil el botón tapa el buscador: se oculta mientras se ve la portada; y al llegar al contacto ya no hace falta
+    if (window.innerWidth < 768 && heroEl.getBoundingClientRect().bottom > 120) return true;
+    return contEl.getBoundingClientRect().top < vh * 0.85;
+  }
   function onScroll() {
     var y = window.pageYOffset || document.documentElement.scrollTop || 0, d = y - lastY;
-    if (y < 90) { hdr.classList.remove('away'); fab.classList.remove('show'); lastY = y; return; }
+    var mobileHero = window.innerWidth < 768 && heroEl.getBoundingClientRect().bottom > 120;
+    if (y < 90 || mobileHero) { hdr.classList.remove('away'); fab.classList.remove('show'); lastY = y; return; }
+    if (fabBlocked()) { fab.classList.remove('show'); if (d > 0) hdr.classList.add('away'); lastY = y; return; }
     if (Math.abs(d) < 6) return;
     if (d > 0) { hdr.classList.add('away'); fab.classList.add('show'); }
     else { hdr.classList.remove('away'); fab.classList.remove('show'); }
