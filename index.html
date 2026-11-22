@@ -432,6 +432,19 @@ footer.sf{margin-top:0;}
 .pcard #ltitle{display:none;}
 .pcard .ph{height:auto;display:flex;justify-content:center;border-radius:0;overflow:visible;}
 .pcard .ph img{height:158px;width:auto;max-width:100%;object-fit:contain;border-radius:8px;}
+
+/* Ajuste 9: móvil */
+.panels{position:relative;z-index:1;} #duo{z-index:3;} #propietarios{position:relative;z-index:4;}
+@media(max-width:767px){
+  header.top .brand{white-space:nowrap;font-size:15px;gap:8px;} header.top .brand .lg{height:19px;}
+  .top-cta{white-space:nowrap;}
+  .sform input[type=date]{-webkit-appearance:none;appearance:none;display:block;width:100%;min-height:30px;background:transparent;color:var(--pine);font:inherit;text-align:left;position:relative;}
+  .sform input[type=date]::-webkit-date-and-time-value{text-align:left;}
+  .sform input[type=date].empty::before{content:attr(data-ph);color:var(--muted);position:absolute;left:0;top:50%;transform:translateY(-50%);}
+  .sform input[type=date].empty::-webkit-datetime-edit{opacity:0;}
+  #hero{height:100svh;min-height:600px;}
+  .s1 h1,.s2 h2{overflow-wrap:break-word;}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -934,6 +947,16 @@ footer.sf{margin-top:0;}
 
   // portada fija: el scroll de Lenis ya suaviza, por eso scrub directo (sin segundo suavizado)
   gsap.set('.s2', { autoAlpha: 0, y: 40 });
+  var isMob = window.innerWidth < 768;
+  if (isMob) {
+    // móvil: sin scroll fijado; las dos fotos y textos se suceden solos, sin solapes
+    gsap.to('.layer.coast img', { scale: 1.18, duration: 10, ease: 'none' });
+    gsap.timeline({ delay: 3 })
+      .to('.s1', { autoAlpha: 0, y: -24, duration: 0.6, ease: 'none' })
+      .to('#l2', { opacity: 1, duration: 1.2, ease: 'none' }, 0.2)
+      .fromTo('#l2 img', { scale: 1.2 }, { scale: 1.02, duration: 8, ease: 'none' }, 0.2)
+      .to('.s2', { autoAlpha: 1, y: 0, duration: 0.8, ease: 'power2.out' }, 0.9);
+  } else {
   var tl = gsap.timeline({
     scrollTrigger: { trigger: '#hero', start: 'top top', end: (window.innerWidth < 768 ? '+=1300' : '+=2200'), scrub: true, pin: true }
   });
@@ -944,6 +967,8 @@ footer.sf{margin-top:0;}
     .to('#l2', { opacity: 1, ease: 'none', duration: 2 }, 3)
     .to('.s2', { autoAlpha: 1, y: 0, duration: 1.2, ease: 'power2.out' }, 4)
     .to({}, { duration: 1.6 }, 7.4);
+
+  }
 
   // cabecera: blanca sobre fotos y secciones oscuras, oscura sobre crema
   var hdr = $('topbar'), darkEls = [$('hero'), $('duo'), $('opiniones'), $('preguntas')];
@@ -981,10 +1006,16 @@ footer.sf{margin-top:0;}
   // propietarios: conversación rápida, pocos píxeles de scroll
   var msgs = gsap.utils.toArray('#duo .msg').slice(1);
   gsap.set(msgs, { autoAlpha: 0, y: 22 });
-  var td = gsap.timeline({ scrollTrigger: { trigger: '#duo', start: 'top top', end: (window.innerWidth < 768 ? '+=700' : '+=1000'), scrub: true, pin: true } });
-  td.fromTo('#duoImg', { scale: 1 }, { scale: 1.25, ease: 'none', duration: 3.6 }, 0);
-  msgs.forEach(function (m, i) { td.to(m, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0.2 + i * 0.5); });
-  td.to({}, { duration: 0.5 });
+  if (window.innerWidth < 768) {
+    var tm = gsap.timeline({ paused: true });
+    msgs.forEach(function (m, i) { tm.to(m, { autoAlpha: 1, y: 0, duration: 0.45, ease: 'power2.out' }, 0.15 + i * 0.55); });
+    ScrollTrigger.create({ trigger: '#duo', start: 'top 55%', once: true, onEnter: function () { tm.play(); } });
+  } else {
+    var td = gsap.timeline({ scrollTrigger: { trigger: '#duo', start: 'top top', end: '+=1000', scrub: true, pin: true } });
+    td.fromTo('#duoImg', { scale: 1 }, { scale: 1.25, ease: 'none', duration: 3.6 }, 0);
+    msgs.forEach(function (m, i) { td.to(m, { autoAlpha: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0.2 + i * 0.5); });
+    td.to({}, { duration: 0.5 });
+  }
 
   // tres tarjetas: se completan solas al entrar (una vez), siempre hasta el final
   function once(sel, fn) { ScrollTrigger.create({ trigger: sel, start: 'top 85%', once: true, onEnter: fn }); }
@@ -1044,6 +1075,8 @@ footer.sf{margin-top:0;}
     function step(){ var c=g.querySelector('.rcard'); return c? c.getBoundingClientRect().width+12 : 300; }
     var go=function(d){ g.scrollBy({left:d*step()*(window.innerWidth>700?2:1),behavior:'smooth'}); };
     document.getElementById('rprev').onclick=function(){go(-1);}; document.getElementById('rnext').onclick=function(){go(1);}; })();
+
+  (function(){ ['llegada','salida'].forEach(function(id){ var i=document.getElementById(id); if(!i) return; i.setAttribute('data-ph','dd/mm/aaaa'); var f=function(){ i.classList.toggle('empty', !i.value); }; i.addEventListener('input',f); i.addEventListener('change',f); f(); }); })();
 </script>
 </body>
 </html>
