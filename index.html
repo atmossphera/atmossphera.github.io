@@ -450,6 +450,22 @@ footer.sf{margin-top:0;}
   .panels{height:auto;min-height:0;flex-direction:column;}
   .panel{flex:none;height:210px;} .panel:hover,.panel.on{height:270px;}
 }
+
+/* Ajuste 10: portada en móvil */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
+@media(max-width:767px){
+  header.top .wrap{gap:10px;padding:0 16px;}
+  header.top .brand{font-size:14px;gap:7px;letter-spacing:.01em;min-width:0;}
+  header.top .brand .lg{height:17px;}
+  .top-cta{min-height:38px;padding:0 14px;font-size:11px;letter-spacing:.07em;flex:none;}
+  #hero .hero-shade{background:linear-gradient(180deg,rgba(14,28,20,.5),rgba(14,28,20,0) 26%),linear-gradient(0deg,rgba(14,28,20,.45),transparent 45%);}
+  .hero-in{padding-top:96px;padding-bottom:250px;justify-content:flex-start;}
+  .display{font-size:clamp(32px,9.4vw,44px);margin:14px 0 14px;}
+  .sform{padding:12px;border-radius:20px;}
+  .sform .sf{padding:6px 10px;}
+  .sform .go{min-height:48px;}
+  .searchbar{bottom:20px;}
+}
 </style>
 <script type="application/ld+json">
 {
